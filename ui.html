@@ -1,17 +1,19 @@
-<h2>Rectangle Creator</h2>
-<p>Count: <input id="count" value="5"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
+<h2>Design Doc Generator</h2>
+<button id="generate">生成</button>
+<div id="jsonContainer"></div>
 <script>
 
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+document.getElementById('generate').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'generate' } }, '*')
 }
 
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+onmessage = (event) => {
+  console.log(event.data.pluginMessage);
+  const jsonContainer = document.getElementById('jsonContainer');
+  jsonContainer.textContent = JSON.stringify(event.data.pluginMessage);
 }
+// document.getElementById('cancel').onclick = () => {
+//   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+// }
 
 </script>
