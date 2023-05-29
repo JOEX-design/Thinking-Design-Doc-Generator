@@ -5,10 +5,26 @@
 // You can access browser APIs in the <script> tag inside "ui.html" which has a
 // full browser environment (see documentation).
 // This shows the HTML page in "ui.html".
-figma.showUI(__html__);
+figma.showUI(__html__, {
+    themeColors: true
+});
+figma.skipInvisibleInstanceChildren = true;
+figma.ui.resize(380, 480);
+figma.ui.postMessage({});
+console.log("start running...");
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
 // posted message.
+const selectedFrame = figma.currentPage.selection.filter(node => node.type === "FRAME");
+console.log(selectedFrame.length);
+if (selectedFrame.length) {
+    figma.notify(selectedFrame[0].name);
+    // if (selectedFrame[0].name)
+}
+else {
+    figma.notify("请选择一个Frame");
+}
+console.log(selectedFrame);
 figma.ui.onmessage = msg => {
     // One way of distinguishing between different types of messages sent from
     // your HTML page is to use an object with a "type" property like this.
