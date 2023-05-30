@@ -11,7 +11,7 @@ module.exports = (env, argv) => ({
   entry: {
     ui: './src/ui.tsx', // The entry point for your UI code
     code: './src/code.ts', // The entry point for your plugin code
-    doc: './src/docs/doc-index.tsx'
+    doc: './src/docs/index.tsx'
   },
 
   module: {
@@ -40,16 +40,18 @@ module.exports = (env, argv) => ({
     new HtmlWebpackPlugin({  // Also generate a test.html
       inject: 'body',
       template: './src/ui.html',
-      filename: 'ui.html',
+      filename: 'plugin-ui.html',
       chunks: ['ui'],
       cache: false
     }),
-    // new HtmlWebpackPlugin ({
-    //   template: './src/docs/doc-index.html',
-    //   filename: 'doc-index.html',
-    //   // chunks: ['doc-index'],
-    //   // cache: false
-    // }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/ui/]),
+    new HtmlWebpackPlugin ({
+      inject: 'body',
+      template: './src/docs/index.html',
+      filename: 'index.html',
+      chunks: ['doc'],
+      cache: false
+    }),
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/doc/]),
   ],
 });
