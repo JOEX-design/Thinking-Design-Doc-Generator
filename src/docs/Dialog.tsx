@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import * as React from "react"
+import { Component } from "react"
+import * as TestImg from "../../data/testImg.json"
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    return <h1>Hello World</h1>
-  }
+type FooterProps = {
+  content: any
 }
+const arrary = TestImg.definition.componentMainImg
 
-export default App
+console.log(arrary)
+export const App = () => {
+  // const imgSrc = URL.createObjectURL(
+  //   new Blob([arrary], { type: 'image/png' } /* (1) */)
+  // );
+  // console.log(img.src)
+  return (
+    <footer>
+    </footer>
+  )
+}

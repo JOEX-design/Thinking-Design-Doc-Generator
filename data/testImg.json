@@ -1,3 +1,10 @@
+{
+  "definition": {
+      "componentName": "对话框 Dialog",
+      "componentDesc": "在当前页面打开一个临时浮层，承载相关操作。",
+      "componentDefine": "对话框需要用户通过一个按钮或者元素进行触发，用于关键信息录入或信息确认。唤出对话框时会中断用户当前的任务流程，所以请谨慎使用对话框以避免对用户过度干扰。",
+      "componentLink": "https://www.figma.com/file/AItcK3Oz6wngtyKJ6e138e/?node-id=2%3A2",
+      "componentMainImg": {
           "0": 60,
           "1": 115,
           "2": 118,
@@ -30798,3 +30805,28 @@
           "30797": 103,
           "30798": 62,
           "30799": 10
+      }
+  },
+  "breakdown": [
+      {
+          "breakdownItem": "标题栏 _DialogHeader",
+          "breakdownValue": "用于展示标题信息，支持副标题或支持标题右侧 Tooltips，两者互斥；当内容过多时使用 Tooltip"
+      },
+      {
+          "breakdownItem": "内容区域 _DialogContent",
+          "breakdownValue": "用于展示具体内容；功能型对话框支持传入各种形式的信息，如表单、列表、表格（使用 ContentSlot 传入）"
+      },
+      {
+          "breakdownItem": "底栏 _DialogFooter (可选)",
+          "breakdownValue": "用于承载操作类按钮，可选"
+      },
+      {
+          "breakdownItem": "关闭按钮",
+          "breakdownValue": "必须含有关闭按钮，点击后关闭对话框"
+      },
+      {
+          "breakdownItem": "副标题 (可选)",
+          "breakdownValue": "副标题可以放在标题上方或下方。当用于对标题信息进行说明时，放在下方，最多三行；当用于表达弹框内容的某种附属信息时（如任务状态、权限、ID等），放在上方，最多一行"
+      }
+  ]
+}

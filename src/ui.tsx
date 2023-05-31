@@ -6,38 +6,47 @@ const PluginUI = () => {
         parent.postMessage({ pluginMessage: { type: 'generate' } }, '*')
     }
     const copyJSON = () => {
-        parent.postMessage({ pluginMessage: { type: 'copyJSON' } }, '*')
+        parent.postMessage({ pluginMessage: { type: 'showImg' } }, '*')
     }
 
-    onmessage = async msg => {
-        console.log("hasnsg")
-        console.log(msg)
-        if (msg.data.pluginMessage.type === 'copyJSON') {
-            // let result ={}
-            // console.log(msg.data.pluginMessage)
-            console.log(msg.data.pluginMessage.data)
+    let jsonString = 'fdsfdsfsd'
+
+    onmessage = msg => {
+        if (msg.data.pluginMessage.type === 'showImg') {
             const resultString = JSON.stringify(msg.data.pluginMessage.data)
-            // document.execCommand(resultString);
-            try {
-                console.log(resultString)
-                document.execCommand(resultString)
-                // navigator.clipboard.writeText(resultString)
-            // figma.notify("JSON 复制成功")
-            } catch (e) {
-            console.error('Unable to copy content to clipboard!', e);
-            }
+            const img = document.getElementById('i') as HTMLImageElement
+            const imgBuffer = msg.data.pluginMessage.data.definition.componentMainImg.buffer
+            const blob = new Blob([imgBuffer], {'type': 'image/png'});
+            img.src = URL.createObjectURL(blob);
+
         }
+        if (msg.data.pluginMessage.type === 'jsonGenerated') {
+            console.log('JSONGEEEEEEEEEEEE')
+            jsonString = JSON.stringify(msg.data.pluginMessage.data);
+            jsonString = '哈哈哈'
+            console.log(jsonString)
+
+        }
+
+
+
+        // onmessage = (event) => {
+//   console.log(event.data.pluginMessage);
+//   const jsonContainer = document.getElementById('jsonContainer');
+//   jsonContainer.textContent = JSON.stringify(event.data.pluginMessage);
+// }
     }
- 
+
     return (
         <div>
             <h2>Design Doc Generator</h2>
-            <button id="generate" onClick={generate}>生成</button>
-            <button id="generate" onClick={copyJSON}>复制 JSON</button>
-            <div id="jsonContainer"></div>
+            <button onClick={generate}>生成</button>
+            <button onClick={copyJSON}>展示图片</button>
+            <img id="i" width="200"></img>
+            <div>{jsonString}</div>
         </div>
     );
 }
 
-const root = createRoot(document.getElementById('pluginUI')!) // createRoot(container!) if you use TypeScript
+const root = createRoot(document.getElementById('pluginUI')!)
 root.render(<PluginUI />)
