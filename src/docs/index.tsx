@@ -1,12 +1,12 @@
 import * as React from "react";
 import { createRoot } from 'react-dom/client'
-import {App} from "./Dialog"
+import {DocContainer} from "./DocContainer"
 
 const DocUI = () => {
     return (
         <div>
             <h2>Design Doc Generator</h2>
-            <App></App>
+            <DocContainer></DocContainer>
         </div>
     );
 }

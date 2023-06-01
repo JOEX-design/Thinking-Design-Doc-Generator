@@ -19,9 +19,9 @@ figma.ui.onmessage = async msg => {
     console.log(result)
   }
 
-  if (msg.type === 'copyJSON') {
+  if (msg.type === 'showImg') {
     console.log(result)
-    figma.ui.postMessage({type: 'copyJSON', data: result})
+    figma.ui.postMessage({type: 'showImg', data: result})
     // console.log('Result: ')
     // const resultString = JSON.stringify(result)
     // // document.execCommand(resultString);
