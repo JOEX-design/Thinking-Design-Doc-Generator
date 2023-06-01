@@ -1,43 +1,33 @@
 import * as React from "react";
+import { useState } from 'react';
 import { createRoot } from 'react-dom/client'
-import { DocContainer } from "./docs/DocContainer";
+import { DocContainer } from "../docs/DocContainer"
 
 const PluginUI = () => {
+    const [jsonData, setJsonData] = useState(null);
+
     const generate = () => {
         parent.postMessage({ pluginMessage: { type: 'generate' } }, '*')
     }
+
     const showImg = () => {
         console.log('clicked showImg')
         parent.postMessage({ pluginMessage: { type: 'showImg' } }, '*')
     }
 
-    // let jsonString = ''
-
-    onmessage = msg => {
-        console.log(msg)
+    const processData = (msg) => {
         if (msg.data.pluginMessage.type === 'showImg') {
             const resultString = JSON.stringify(msg.data.pluginMessage.data)
             const img = document.getElementById('i') as HTMLImageElement
             const imgBuffer = msg.data.pluginMessage.data.definition.componentMainImg.buffer
             const blob = new Blob([imgBuffer], {'type': 'image/png'})
             img.src = URL.createObjectURL(blob)
+            setJsonData(resultString)
             console.log(img.src)
-
         }
-        // if (msg.data.pluginMessage.type === 'jsonGenerated') {
-        //     jsonString = JSON.stringify(msg.data.pluginMessage.data)
-        //     jsonString = '哈哈哈'
-
-        // }
-
-
-
-        // onmessage = (event) => {
-//   console.log(event.data.pluginMessage);
-//   const jsonContainer = document.getElementById('jsonContainer');
-//   jsonContainer.textContent = JSON.stringify(event.data.pluginMessage);
-// }
     }
+
+    onmessage = msg => processData(msg)
 
     return (
         <div>
@@ -47,7 +37,7 @@ const PluginUI = () => {
             <div>
                 <img id="i" width="200"></img>
             </div>
-            {/* <div>{jsonString}</div> */}
+            <div>{jsonData}</div>
             <DocContainer></DocContainer>
         </div>
     );

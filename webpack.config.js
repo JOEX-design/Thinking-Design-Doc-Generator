@@ -9,7 +9,7 @@ module.exports = (env, argv) => ({
   devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
   entry: {
-    ui: './src/ui.tsx', // The entry point for your UI code
+    ui: './src/ui/ui.tsx', // The entry point for your UI code
     code: './src/code.ts', // The entry point for your plugin code
     doc: './src/docs/index.tsx'
   },
@@ -39,7 +39,7 @@ module.exports = (env, argv) => ({
   plugins: [
     new HtmlWebpackPlugin({  // Also generate a test.html
       inject: 'body',
-      template: './src/ui.html',
+      template: './src/ui/ui.html',
       filename: 'plugin-ui.html',
       chunks: ['ui'],
       cache: false

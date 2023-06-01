@@ -6,10 +6,6 @@ figma.showUI(__html__, {
 figma.skipInvisibleInstanceChildren = true;
 figma.ui.resize(380, 480);
 
-
-
-
-
 let result ={}
 
 figma.ui.onmessage = async msg => {
