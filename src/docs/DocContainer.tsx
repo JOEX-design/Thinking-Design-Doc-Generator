@@ -10,8 +10,8 @@ import * as React from "react"
 
 export const DocContainer = () => {
   return (
-    <div>
-      doc container
+    <div className="bg-slate-50">
+      {/* doc container */}
     </div>
   )
 }

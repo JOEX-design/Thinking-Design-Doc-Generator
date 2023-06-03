@@ -61,15 +61,16 @@ function PreviewApp() {
   }, []);
 
   return (
-    <div className="preview-app">
-      <h3 className="text-3xl font-bold underline">Preview App</h3>
-      <div className="preview-connection-info">
-        <strong>Connection Status:</strong>
-        <div className={`preview-connection-status${isConnected ? ' status-green' : ''}`}/>
+    <div className="bg-slate-300 w-screen h-screen font-sans flex flex-col items-center p-5">
+      <h3 className="text-2xl font-semibold text-slate-700">Preview App</h3>
+      <div className="flex items-center mb-2">
+        <strong className="text-base font-medium text-slate-500">Connection Status:</strong>
+        <div className={`rounded-full m-2 w-3 h-3 transition-all ${isConnected ? 'bg-green-600' : 'bg-red-600'}`}/>
       </div>
 
+
       {PREVIEW_ENV === 'browser' && setIsConnected && (
-        <div className="preview-plugin-wrapper">
+        <div className="bg-slate-200 shadow-md rounded-md border border-slate-100 w-96 h-96">
           <App />
         </div>
       )}

@@ -3,13 +3,13 @@ import generateJSON from "./modules/generateJSON";
 const PREVIEW_ENV = process.env.PREVIEW_ENV
 
 figma.showUI(__html__, {
-  themeColors: true
+  // themeColors: true
 });
 
 figma.skipInvisibleInstanceChildren = true;
 
 if (PREVIEW_ENV === 'figma') {
-  figma.ui.resize(300, 200);
+  figma.ui.resize(300, 100);
 } else {
   figma.ui.resize(400, 400);
 }
