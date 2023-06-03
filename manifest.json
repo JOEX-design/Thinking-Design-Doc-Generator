@@ -8,10 +8,5 @@
   "editorType": [
     "figma"
   ],
-  "ui": "dist/plugin-ui.html",
-  "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
-  }
+  "ui": "dist/plugin-ui.html"
 }

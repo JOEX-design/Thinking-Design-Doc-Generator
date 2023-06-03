@@ -16,7 +16,6 @@ const generateJSON = async () => {
   if (selectedFrame.length) {
   if (FrameNameIsValid(selectedFrame[0].name)) {
       const docDefinitionNode = selectedFrame[0].findAll(node => node.name === "doc-definition") as FrameNode[];
-      console.log(docDefinitionNode)
       const docBreakdownNode = selectedFrame[0].findAll(node => node.name === "doc-breakdown") as FrameNode[];
       const docCompoTypes = selectedFrame[0].findAll(node => node.name === "doc-component-type") as FrameNode[];
 

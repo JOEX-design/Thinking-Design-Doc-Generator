@@ -1,23 +1,27 @@
 import generateJSON from "./modules/generateJSON";
 
+const PREVIEW_ENV = process.env.PREVIEW_ENV
+
 figma.showUI(__html__, {
   themeColors: true
 });
-figma.skipInvisibleInstanceChildren = true;
-figma.ui.resize(380, 480);
 
-let result ={}
+figma.skipInvisibleInstanceChildren = true;
+
+if (PREVIEW_ENV === 'figma') {
+  figma.ui.resize(300, 200);
+} else {
+  figma.ui.resize(400, 400);
+}
 
 figma.ui.onmessage = async msg => {
   if (msg.type === 'generate') {
-    result = await generateJSON();
+    const result = await generateJSON();
     figma.ui.postMessage({type: 'jsonGenerated', data: result})
-    console.log(result)
   }
 
   if (msg.type === 'showImg') {
-    console.log(result)
-    figma.ui.postMessage({type: 'showImg', data: result})
+    // figma.ui.postMessage({type: 'showImg', data: result})
     // console.log('Result: ')
     // const resultString = JSON.stringify(result)
     // // document.execCommand(resultString);

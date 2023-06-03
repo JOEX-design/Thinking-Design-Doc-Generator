@@ -1,5 +1,5 @@
 // Image Unit8Array Compressor
-import {gzip} from 'pako'
+// import {gzip} from 'pako'
 import {Buffer} from 'buffer';
 
 
@@ -28,21 +28,23 @@ const extractDefinition = async (frameNode: FrameNode) => {
 
   // TODO: Extract into an image array generator
   console.log("----DocGen-----: start export img")
-  const imgBytes = await frameImgShowcase.exportAsync({ format: 'PNG' }).catch(e => console.log(e)) as Uint8Array
-  const imgBytesStr = Buffer.from(imgBytes).toString('utf8')
+  const imgBytes = await frameImgShowcase.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 2 } }).catch(e => console.log(e)) as Uint8Array
+  const imgBytesStr = Buffer.from(imgBytes).toString('base64')
   console.log("----DocGen-----: finished export img")
   console.log("----DocGen-----: finished extract definition")
 
   console.log(`----DocGen-----: start compressing img: ${formatBytes(imgBytes.length)}`)
-  const compressedImgBytes = await gzip(imgBytes);
-  console.log(`----DocGen-----: compreesed img: ${formatBytes(compressedImgBytes.length)}`)
+  // TODO: Compress and decompress!!!
+  // const compressedImgBytes = await gzip(imgBytes);
+  // console.log(`----DocGen-----: compreesed img: ${formatBytes(compressedImgBytes.length)}`)
 
+  // console.log('extract img bufer', imgBytes.buffer)
   return {
     componentName: frameTitle[0].children[0] ? frameTitle[0].children[0].name : null,
     componentDesc: frameTitle[0].children[1] ? frameTitle[0].children[1].name : null,
     componentDefine: frameDefine[0].children[0] ? frameDefine[0].children[0].name : null,
     componentLink: link.value,
-    componentMainImg: imgBytes
+    componentMainImg: imgBytesStr
   }
 }
 
