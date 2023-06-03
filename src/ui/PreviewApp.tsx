@@ -62,7 +62,7 @@ function PreviewApp() {
 
   return (
     <div className="preview-app">
-      <h3>Preview App</h3>
+      <h3 className="text-3xl font-bold underline">Preview App</h3>
       <div className="preview-connection-info">
         <strong>Connection Status:</strong>
         <div className={`preview-connection-status${isConnected ? ' status-green' : ''}`}/>

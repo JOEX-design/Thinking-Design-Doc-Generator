@@ -35,7 +35,7 @@ export const App = () => {
     return (
         <div>
             <h2>Design Doc Generate</h2>
-            <button onClick={generate}>生成</button>
+            <button className="bg-blue-500 text-white rounded-md py-2 px-3"  onClick={generate}>生成</button>
             <button onClick={showImg}>展示图片</button>
             <div>
                 <img id="i" width="300"></img>

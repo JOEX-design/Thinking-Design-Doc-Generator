@@ -17,6 +17,7 @@
     "@types/node": "^16.7.1",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "autoprefixer": "^10.4.14",
     "css-loader": "^6.2.0",
     "express": "^4.17.1",
     "fork-ts-checker-webpack-plugin": "^8.0.0",
@@ -25,6 +26,9 @@
     "html-webpack-plugin": "^5.3.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "postcss": "^8.4.24",
+    "postcss-loader": "^7.3.2",
+    "postcss-nested": "^6.0.1",
     "prettier": "^2.7.1",
     "react-dev-utils": "^12.0.1",
     "react-refresh": "^0.14.0",
@@ -43,6 +47,7 @@
     "buffer": "^6.0.3",
     "pako": "^2.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.2"
   }
 }
