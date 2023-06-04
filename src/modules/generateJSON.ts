@@ -22,8 +22,9 @@ const generateJSON = async () => {
       // Refactor later
       if (docDefinitionNode.length) {
       const def = await extractDefinition(docDefinitionNode[0])
-      const breakdownList = extractBreakdown(docBreakdownNode[0])
+      const breakdownList = await extractBreakdown(docBreakdownNode[0])
       // const compoTypesList = ExtractDocCompoTypes(docCompoTypes[0])
+      console.log('def', def.componentDefine)
 
       return {
           definition: {...def},

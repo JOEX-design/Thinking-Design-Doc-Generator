@@ -1,4 +1,7 @@
 import * as React from "react"
+import { DocDefinition } from "../ui/components/DocDefinition";
+import { DocBreakdown } from "../ui/components/DocBreakdown";
+import generateImgSrc from "../modules/generateImgSrc";
 
 // type  = {
 //   label: string,
@@ -8,10 +11,15 @@ import * as React from "react"
 
 // console.log(arrary)
 
-export const DocContainer = () => {
+export const DocContainer = ({
+  data=null,
+}) => {
+  const docData = data ? {...data} : null;
+
   return (
-    <div className="bg-slate-50">
-      {/* doc container */}
+    <div className="bg-white h-full overflow-auto pb-10 text-slate-500 font-normal">
+      <DocDefinition definition={docData.definition}></DocDefinition>
+      <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>
     </div>
   )
 }

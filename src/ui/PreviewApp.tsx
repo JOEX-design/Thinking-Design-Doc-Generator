@@ -61,7 +61,7 @@ function PreviewApp() {
   }, []);
 
   return (
-    <div className="bg-slate-300 w-screen h-screen font-sans flex flex-col items-center p-5">
+    <div className="bg-slate-300 w-screen h-screen font-sans flex flex-col items-center p-5 overflow-clip">
       <h3 className="text-2xl font-semibold text-slate-700">Preview App</h3>
       <div className="flex items-center mb-2">
         <strong className="text-base font-medium text-slate-500">Connection Status:</strong>
@@ -70,8 +70,8 @@ function PreviewApp() {
 
 
       {PREVIEW_ENV === 'browser' && setIsConnected && (
-        <div className="bg-slate-200 shadow-md rounded-md border border-slate-100 w-96 h-96">
-          <App />
+        <div className="w-full h-full flex justify-center pb-24">
+          <App/>
         </div>
       )}
     </div>

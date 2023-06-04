@@ -1,13 +1,21 @@
-const extractBreakdown = (frameNode: FrameNode) => {
+import {Buffer} from 'buffer';
+
+const extractBreakdown = async (frameNode: FrameNode) => {
 
   const breakdownFrameList = frameNode.findAll(n => n.name === "breakdown-list") as FrameNode[]
   const itemFrameList = breakdownFrameList[0].children as FrameNode[]
+  const frameImgShowcase = frameNode.findOne(n => n.name === "component-showcase") as FrameNode
 
   console.log("----DocGen-----: start extract breakdowns")
 
-  const breakdownList = itemFrameList.map(listItem => {
+  const imgBytes = await frameImgShowcase.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 2 } }).catch(e => console.log(e)) as Uint8Array
+  const imgBytesStr = Buffer.from(imgBytes).toString('base64')
+
+  const breakdownList = itemFrameList.map((listItem, index) => {
     const contents = listItem.findAll(n => n.type === "TEXT")
+    console.log('listItem', listItem)
     return {
+      key: index,
       breakdownItem: contents[1].name,
       breakdownValue: contents[2].name
     }
@@ -15,7 +23,10 @@ const extractBreakdown = (frameNode: FrameNode) => {
 
   console.log("----DocGen-----: finished extract breakdowns")
 
-  return breakdownList
+  return { 
+    breakdownImg: imgBytesStr,
+    breakdownList: breakdownList
+  }
 }
 
 export default extractBreakdown

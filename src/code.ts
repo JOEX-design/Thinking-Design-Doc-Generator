@@ -11,16 +11,26 @@ figma.skipInvisibleInstanceChildren = true;
 if (PREVIEW_ENV === 'figma') {
   figma.ui.resize(300, 100);
 } else {
-  figma.ui.resize(400, 400);
+  figma.ui.resize(340, 420);
 }
 
 figma.ui.onmessage = async msg => {
-  if (msg.type === 'generate') {
+  if (msg.type === 'clickGenerate') {
     const result = await generateJSON();
     figma.ui.postMessage({type: 'jsonGenerated', data: result})
   }
+  if (msg.type === 'clickPreview') {
+    if (PREVIEW_ENV !== 'figma') {
+      figma.ui.resize(800, 500);
+    }
+    figma.ui.postMessage({type: 'previewResized'})
+  }
 
-  if (msg.type === 'showImg') {
+  // if (msg.type === 'onPreviewMode') {
+  //   if (PREVIEW_ENV !== 'figma') {
+  //     figma.ui.resize(800, 500);
+  //   }
+  // }
     // figma.ui.postMessage({type: 'showImg', data: result})
     // console.log('Result: ')
     // const resultString = JSON.stringify(result)
@@ -32,7 +42,7 @@ figma.ui.onmessage = async msg => {
     // } catch (e) {
     // console.error('Unable to copy content to clipboard!', e);
     // }
-  }
+
     // Make sure to close the plugin when you're done. Otherwise the plugin will
     // keep running, which shows the cancel button at the bottom of the screen.
     // figma.closePlugin();
