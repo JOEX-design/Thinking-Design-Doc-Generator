@@ -39,10 +39,12 @@ const extractDefinition = async (frameNode: FrameNode) => {
   // console.log(`----DocGen-----: compreesed img: ${formatBytes(compressedImgBytes.length)}`)
 
   // console.log('extract img bufer', imgBytes.buffer)
+  const componentDescFrame = frameTitle[0].children[1] as TextNode || null
+  const componentDefineFram = frameDefine[0].children[0] as TextNode || null
   return {
     componentName: frameTitle[0].children[0] ? frameTitle[0].children[0].name : null,
-    componentDesc: frameTitle[0].children[1] ? frameTitle[0].children[1].name : null,
-    componentDefine: frameDefine[0].children[0] ? frameDefine[0].children[0].name : null,
+    componentDesc: componentDescFrame.characters,
+    componentDefine: componentDefineFram.characters,
     componentLink: link.value,
     componentMainImg: imgBytesStr
   }
