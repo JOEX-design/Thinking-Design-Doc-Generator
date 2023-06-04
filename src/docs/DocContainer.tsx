@@ -1,6 +1,7 @@
 import * as React from "react"
 import { DocDefinition } from "../ui/components/DocDefinition";
 import { DocBreakdown } from "../ui/components/DocBreakdown";
+import { DocPrinciple } from "../ui/components/DocPrinciple";
 import generateImgSrc from "../modules/generateImgSrc";
 
 // type  = {
@@ -20,6 +21,7 @@ export const DocContainer = ({
     <div className="bg-white h-full overflow-auto pb-10 text-slate-500 font-normal">
       <DocDefinition definition={docData.definition}></DocDefinition>
       <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>
+      <DocPrinciple principle={docData.principle}></DocPrinciple>
     </div>
   )
 }

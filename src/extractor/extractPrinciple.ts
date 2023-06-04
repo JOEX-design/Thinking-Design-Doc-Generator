@@ -11,7 +11,7 @@ const extractPrinciple = async (frameNode: FrameNode) => {
       item: await Promise.all(itemFrameList.filter((item) => {
         if (principleNamePattern.test(item.name)) return item
       }).map(async (item, index) => {
-        const frameImgShowcase = frameNode.findOne(n => n.name === "component-showcase") as FrameNode
+        const frameImgShowcase = item.findOne(n => n.name === "component-showcase") as FrameNode
         const imgBytes = await frameImgShowcase.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 2 } }).catch(e => console.log(e)) as Uint8Array
         const imgBytesStr = Buffer.from(imgBytes).toString('base64')
 
