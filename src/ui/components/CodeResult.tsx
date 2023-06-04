@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useState, useEffect } from 'react';
 import ReactJson from 'react-json-view'
+import { Button } from "./Button";
 import { Loading } from "./Loading";
 
 export const CodeResult = ({
@@ -14,7 +14,7 @@ export const CodeResult = ({
 
   if (code && !isLoading) {
     return (
-      <div className="flex flex-1 overflow-auto flex-col">
+      <div className="flex flex-1 overflow-y-auto overflow-x-visible flex-col">
         <div className="flex-1 overflow-auto bg-slate-100 rounded-md p-3 shadow-sm mb-2">
           <ReactJson
               src={code}
@@ -23,12 +23,12 @@ export const CodeResult = ({
               collapseStringsAfterLength = {4}
           ></ReactJson>
         </div>
-        <button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-md py-1.5 px-3 text-sm shadow-md shadow-purple-200 text-opacity-90"  onClick={previewMode}>💊 预览网站</button>
+        <Button variant="secondary" onClick={previewMode} className="mb-6">💊 预览网站</Button>
       </div>
   )}
   else {
     return (
-      <div className="flex-1 overflow-auto rounded-md p-3 border-2 border-dashed border-slate-300">
+      <div className="flex-1 overflow-auto rounded-md p-3 mb-6 border-2 border-dashed border-slate-300">
         {(isLoading) ? <Loading></Loading> : null}
       </div>
     )
