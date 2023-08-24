@@ -27,13 +27,12 @@ const generateJSON = async () => {
       const docSimilar = selectedFrame[0].findAll(node => node.name === "doc-similar") as FrameNode[];
 
       // Refactor later
-      if (docDefinitionNode.length) {
-      const def = await extractDefinition(docDefinitionNode[0])
+      const def = docDefinitionNode.length && await extractDefinition(docDefinitionNode[0])
       const breakdownList = await extractBreakdown(docBreakdownNode[0])
       const principle = await extractPrinciple(docPrincipleNode[0])
       const compoTypesList = await extractCompoTypes(docCompoTypes[0])
       const bestPractice = await extractBestPractice(docBestPractice[0])
-      const similar = await extractSimilar(docSimilar[0])
+      const similar = docSimilar.length && await extractSimilar(docSimilar[0])
 
       return {
           definition: {...def},
@@ -45,7 +44,6 @@ const generateJSON = async () => {
       }
 
       // figma.ui.postMessage(result)
-      }
   } else {
       figma.notify("Frame名称必须为「doc-starter」")
   }

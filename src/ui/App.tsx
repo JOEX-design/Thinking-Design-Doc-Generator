@@ -4,7 +4,6 @@ import { DocContainer } from "../docs/DocContainer"
 import { CodeResult } from "./components/CodeResult";
 import { Button } from "./components/Button";
 
-
 export const App = () => {
     const [jsonData, setJsonData] = useState(null);
     const [loadingJson, setLoadingJson] = useState(false);
@@ -44,7 +43,6 @@ export const App = () => {
             </div>
             <div className="flex-1 overflow-y-auto bg-white rounded-md shadow-xl">
                 <DocContainer data={jsonData}></DocContainer>
-                {/* <img id="i" width="300"></img> */}
             </div>
         </div>
     )} else { return (
