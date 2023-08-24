@@ -27,12 +27,12 @@ const generateJSON = async () => {
       const docSimilar = selectedFrame[0].findAll(node => node.name === "doc-similar") as FrameNode[];
 
       // Refactor later
-      const def = docDefinitionNode.length && await extractDefinition(docDefinitionNode[0])
+      const def = docDefinitionNode.length != 0 && await extractDefinition(docDefinitionNode[0])
       const breakdownList = await extractBreakdown(docBreakdownNode[0])
       const principle = await extractPrinciple(docPrincipleNode[0])
       const compoTypesList = await extractCompoTypes(docCompoTypes[0])
-      const bestPractice = await extractBestPractice(docBestPractice[0])
-      const similar = docSimilar.length && await extractSimilar(docSimilar[0])
+      const bestPractice = docBestPractice.length != 0 && await extractBestPractice(docBestPractice[0])
+      const similar = docSimilar.length != 0 && await extractSimilar(docSimilar[0])
 
       return {
           definition: {...def},

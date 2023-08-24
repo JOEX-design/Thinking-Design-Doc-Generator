@@ -4,6 +4,7 @@ import { DocBreakdown } from "../ui/components/DocBreakdown";
 import { DocPrinciple } from "../ui/components/DocPrinciple";
 import { DocCompoType } from "../ui/components/DocCompoType";
 import { DocBestPractice } from "../ui/components/DocBestPractice";
+import { DocSimilar } from "../ui/components/DocSimilar";
 
 // type  = {
 //   label: string,
@@ -23,8 +24,9 @@ export const DocContainer = ({
       <DocDefinition definition={docData.definition}></DocDefinition>
       <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>
       <DocCompoType compoType={docData.componentTypes}></DocCompoType>
+      {docData.similar && <DocSimilar similar={docData.similar}></DocSimilar>}
       <DocPrinciple principle={docData.principle}></DocPrinciple>
-      <DocBestPractice bestPractice={docData.bestPractice}></DocBestPractice>
+      {docData.bestPractice && <DocBestPractice bestPractice={docData.bestPractice}></DocBestPractice>}
     </div>
   )
 }

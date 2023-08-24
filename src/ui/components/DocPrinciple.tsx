@@ -8,7 +8,7 @@ export const DocPrinciple = ({
     <div key={row.rowId} className="flex gap-10 items-start mb-20">
       {row.item.map(item => {
         return (
-          <div className="w-1/2" key={item.itemId}>
+          <div className={row.length==2 ? `w-1/2` : `w-auto`} key={item.itemId}>
             <img className="w-full rounded-xl mb-9" src={generateImgSrc(item.img)}></img>
             {item.type === 'green' && (
               <div className="flex items-center mb-2">

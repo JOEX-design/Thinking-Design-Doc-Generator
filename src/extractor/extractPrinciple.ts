@@ -20,8 +20,8 @@ const extractPrinciple = async (frameNode: FrameNode) => {
         const typeNamePrefix = /principle-item-/!
         return {
           itemId: index,
-          title: contents[0].characters,
-          desc: contents[1].characters,
+          title: contents[0]?.characters,
+          desc: contents[1]?.characters,
           type: item.name.replace(typeNamePrefix, ''),
           img: imgBytesStr
         }
