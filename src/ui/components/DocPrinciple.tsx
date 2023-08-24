@@ -6,34 +6,32 @@ export const DocPrinciple = ({
 }) => {
   const principleItem = principle.map(row =>
     <div key={row.rowId} className="flex gap-10 items-start mb-20">
-        {/* <div className="flex items-center mr-3"> */}
-          {row.item.map(item => {
-            return (
-              <div className="w-1/2">
-                <img className="w-full rounded-xl mb-9" src={generateImgSrc(item.img)}></img>
-                {item.type === 'green' && (
-                  <div className="flex items-center mb-2">
-                    <div className="rounded-full mr-2 w-5 h-5 text-center bg-green-700 text-white text-xs leading-5">✓</div>
-                    <div className={` text-green-700`}>{item.title}</div>
-                  </div>
-                  )}
-                {item.type === 'red' && (
-                  <div className="flex items-center mb-2">
-                    <div className="rounded-full mr-2 w-5 h-5 text-center bg-red-500 text-white text-xs leading-5">✗</div>
-                    <div className={` text-red-500`}>{item.title}</div>
-                  </div>
-                )}
-                {item.type === 'orange' && (
-                  <div className="flex items-center mb-2">
-                    <div className="rounded-full mr-2 w-5 h-5 text-center bg-orange-500 text-white text-xs leading-5">!</div>
-                    <div className={` text-orange-500`}>{item.title}</div>
-                  </div>
-                )}
-                <div className='text-sm'>{item.desc}</div>
+      {row.item.map(item => {
+        return (
+          <div className="w-1/2" key={item.itemId}>
+            <img className="w-full rounded-xl mb-9" src={generateImgSrc(item.img)}></img>
+            {item.type === 'green' && (
+              <div className="flex items-center mb-2">
+                <div className="rounded-full mr-2 w-5 h-5 text-center bg-green-700 text-white text-xs leading-5">✓</div>
+                <div className={` text-green-700`}>{item.title}</div>
               </div>
-            )
-          })}
-        {/* </div> */}
+              )}
+            {item.type === 'red' && (
+              <div className="flex items-center mb-2">
+                <div className="rounded-full mr-2 w-5 h-5 text-center bg-red-500 text-white text-xs leading-5">✗</div>
+                <div className={` text-red-500`}>{item.title}</div>
+              </div>
+            )}
+            {item.type === 'orange' && (
+              <div className="flex items-center mb-2">
+                <div className="rounded-full mr-2 w-5 h-5 text-center bg-orange-500 text-white text-xs leading-5">!</div>
+                <div className={` text-orange-500`}>{item.title}</div>
+              </div>
+            )}
+            <div className='text-sm'>{item.desc}</div>
+          </div>
+        )
+      })}
     </div>
   );
 

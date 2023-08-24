@@ -2,7 +2,6 @@ import * as React from "react"
 import { DocDefinition } from "../ui/components/DocDefinition";
 import { DocBreakdown } from "../ui/components/DocBreakdown";
 import { DocPrinciple } from "../ui/components/DocPrinciple";
-import generateImgSrc from "../modules/generateImgSrc";
 
 // type  = {
 //   label: string,

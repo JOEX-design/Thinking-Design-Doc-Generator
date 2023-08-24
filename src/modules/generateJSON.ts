@@ -1,6 +1,7 @@
 import extractDefinition from "../extractor/extractDefinition";
 import extractBreakdown from "../extractor/extractBreakdown";
 import extractPrinciple from "../extractor/extractPrinciple";
+import extractCompoTypes from "../extractor/extractCompoTypes";
 
 const FrameNameIsValid = (frameName: String) => {
   switch (frameName) {
@@ -26,14 +27,13 @@ const generateJSON = async () => {
       const def = await extractDefinition(docDefinitionNode[0])
       const breakdownList = await extractBreakdown(docBreakdownNode[0])
       const principle = await extractPrinciple(docPrincipleNode[0])
-      // const compoTypesList = ExtractDocCompoTypes(docCompoTypes[0])
-      console.log('def', def.componentDefine)
+      const compoTypesList = await extractCompoTypes(docCompoTypes[0])
 
       return {
           definition: {...def},
           breakdown: breakdownList,
-          principle: principle
-          // componentTypes: compoTypesList
+          principle: principle,
+          componentTypes: compoTypesList
       }
 
       // figma.ui.postMessage(result)
