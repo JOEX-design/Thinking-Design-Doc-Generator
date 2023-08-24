@@ -3,6 +3,7 @@ import extractBreakdown from "../extractor/extractBreakdown";
 import extractPrinciple from "../extractor/extractPrinciple";
 import extractCompoTypes from "../extractor/extractCompoTypes";
 import extractBestPractice from "../extractor/extractBestPractice";
+import extractSimilar from "../extractor/extractSimilar";
 
 const FrameNameIsValid = (frameName: String) => {
   switch (frameName) {
@@ -23,6 +24,7 @@ const generateJSON = async () => {
       const docPrincipleNode = selectedFrame[0].findAll(node => node.name === "doc-principle") as FrameNode[];
       const docCompoTypes = selectedFrame[0].findAll(node => node.name === "doc-component-type") as FrameNode[];
       const docBestPractice = selectedFrame[0].findAll(node => node.name === "doc-best-practice") as FrameNode[];
+      const docSimilar = selectedFrame[0].findAll(node => node.name === "doc-similar") as FrameNode[];
 
       // Refactor later
       if (docDefinitionNode.length) {
@@ -31,13 +33,15 @@ const generateJSON = async () => {
       const principle = await extractPrinciple(docPrincipleNode[0])
       const compoTypesList = await extractCompoTypes(docCompoTypes[0])
       const bestPractice = await extractBestPractice(docBestPractice[0])
+      const similar = await extractSimilar(docSimilar[0])
 
       return {
           definition: {...def},
           breakdown: breakdownList,
           principle: principle,
           componentTypes: compoTypesList,
-          bestPractice: bestPractice
+          bestPractice: bestPractice,
+          similar: similar
       }
 
       // figma.ui.postMessage(result)
