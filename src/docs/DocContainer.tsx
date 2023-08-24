@@ -3,6 +3,7 @@ import { DocDefinition } from "../ui/components/DocDefinition";
 import { DocBreakdown } from "../ui/components/DocBreakdown";
 import { DocPrinciple } from "../ui/components/DocPrinciple";
 import { DocCompoType } from "../ui/components/DocCompoType";
+import { DocBestPractice } from "../ui/components/DocBestPractice";
 
 // type  = {
 //   label: string,
@@ -23,6 +24,7 @@ export const DocContainer = ({
       <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>
       <DocCompoType compoType={docData.componentTypes}></DocCompoType>
       <DocPrinciple principle={docData.principle}></DocPrinciple>
+      <DocBestPractice bestPractice={docData.bestPractice}></DocBestPractice>
     </div>
   )
 }
