@@ -13,7 +13,6 @@ const extractBreakdown = async (frameNode: FrameNode) => {
 
   const breakdownList = itemFrameList.map((listItem, index) => {
     const contents = listItem.findAll(n => n.type === "TEXT")
-    console.log('listItem', listItem)
     return {
       key: index,
       breakdownItem: contents[1].name,
