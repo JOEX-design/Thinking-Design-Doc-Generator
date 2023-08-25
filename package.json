@@ -44,6 +44,7 @@
     "ws": "^7.4.5"
   },
   "dependencies": {
+    "@octokit/rest": "^20.0.1",
     "buffer": "^6.0.3",
     "pako": "^2.1.0",
     "react": "^18.2.0",
