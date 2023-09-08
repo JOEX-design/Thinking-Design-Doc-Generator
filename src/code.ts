@@ -11,7 +11,7 @@ figma.skipInvisibleInstanceChildren = true;
 if (PREVIEW_ENV === 'figma') {
   figma.ui.resize(300, 100);
 } else {
-  figma.ui.resize(340, 420);
+  figma.ui.resize(340, 530);
 }
 
 figma.ui.onmessage = async msg => {
@@ -24,6 +24,13 @@ figma.ui.onmessage = async msg => {
       figma.ui.resize(800, 500);
     }
     figma.ui.postMessage({type: 'previewResized'})
+  }
+  if (msg.type === 'previewEnd') {
+    if (PREVIEW_ENV === 'figma') {
+      figma.ui.resize(300, 100);
+    } else {
+      figma.ui.resize(340, 520);
+    }
   }
 
   // if (msg.type === 'onPreviewMode') {

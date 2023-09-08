@@ -16,6 +16,7 @@ export const App = () => {
 
     const endPreviewMode = () => {
         setPreviewMode(false)
+        parent.postMessage({ pluginMessage: { type: 'previewEnd' } }, '*')
     }
 
 
@@ -46,7 +47,7 @@ export const App = () => {
             </div>
         </div>
     )} else { return (
-        <div className={'overflow-x-visible bg-slate-200 shadow-md rounded-md border border-slate-100 flex flex-col p-6 pb-0'} style={{width: '340', height: '420'}}>
+        <div className={'overflow-x-visible bg-slate-200 shadow-md rounded-md border border-slate-100 flex flex-col p-6 pb-0'} style={{width: '340', height: '520'}}>
             <div className="flex justify-between items-center mb-4">
                 <div className="flex justify-start flex-col">
                     <h2 className="text-lg text-slate-600 font-medium">组件文档 Design to Code</h2>
@@ -55,6 +56,8 @@ export const App = () => {
                 <Button variant="primary" className="px-3.5 py-2.5" onClick={generate} isDisabled={loadingJson}>⚡️生成</Button>
             </div>
             <CodeResult code={jsonData} isLoading={loadingJson}></CodeResult>
+            {/* <div className=" h-screen flex flex-col items-center justify-center bg-purple-200"> */}
+    {/* </div> */}
         </div>
     )}
 }

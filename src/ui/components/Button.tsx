@@ -4,7 +4,7 @@ type buttonProps = {
   children: any;
   className?: string;
   autofocus?: boolean;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'iconBtn';
   isDisabled?: boolean;
   type?: 'submit' | 'button' | 'reset';
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -26,14 +26,20 @@ export const Button = ({
 
   switch (variant) {
     case "primary": {
-      buttonClass += ' shadow-lg shadow-violet-300 bg-gradient-to-r from-purple-400 to-violet-500'
+      buttonClass += ' shadow-md shadow-violet-300 bg-gradient-to-r from-purple-400 to-violet-500 flex items-center justify-center'
       textClass += ' text-white text-opacity-90'
       hoverClass += ' hover:from-purple-500 hover:to-violet-600 hover:shadow-purple-400'
       break
     }
     case "secondary": {
-      buttonClass += '  shadow-sm shadow-slate-300 bg-slate-50 border border-slate-200'
+      buttonClass += '  shadow-sm shadow-slate-300 bg-slate-50 border border-slate-200 flex items-center justify-center'
       textClass += ' text-slate-700'
+      hoverClass += ' hover:bg-slate-100 hover:shadow-slate-400 focus:bg-slate-200 focus:border-slate-300'
+      break
+    }
+    case "iconBtn": {
+      buttonClass += '  w-8 h-8'
+      textClass += ' text-slate-500'
       hoverClass += ' hover:bg-slate-100 hover:shadow-slate-400 focus:bg-slate-200 focus:border-slate-300'
       break
     }

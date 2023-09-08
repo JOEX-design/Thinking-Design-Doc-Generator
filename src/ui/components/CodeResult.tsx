@@ -3,6 +3,7 @@ import ReactJson from 'react-json-view'
 import { Button } from "./Button";
 import { Loading } from "./Loading";
 import { Octokit } from "@octokit/rest"
+import { GithubDialog } from "./GithubDialog";
 
 export const CodeResult = ({
   code,
@@ -142,7 +143,8 @@ export const CodeResult = ({
         </div>
         <Button variant="secondary" onClick={previewMode} className="mb-2">💊 预览网站</Button>
         <Button variant="secondary" onClick={() => downloadJSONAsFile(code, 'test.json')} className="mb-2">🔫 导出文件 ({calculateJSONSize(code).toFixed(2)} MB)</Button>
-        <Button variant="secondary" onClick={async() => await commitToGithub(code)} className="mb-6">🔫 同步至Github ({calculateJSONSize(code).toFixed(2)} MB)</Button>
+        {/* <Button variant="secondary" onClick={async() => await commitToGithub(code)} className="mb-6">🔫 同步至Github ({calculateJSONSize(code).toFixed(2)} MB)</Button> */}
+        <GithubDialog jsonObject={code}/>
       </div>
   )}
   else {
