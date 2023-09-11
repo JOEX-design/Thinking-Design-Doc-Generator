@@ -6,6 +6,7 @@ const extractSimilar = async (frameNode: FrameNode) => {
     const headerSubtitleFrame = headerFrame.findOne(n => n.name === "subtitle") as TextNode
     const similarListFrameWrap = frameNode.findOne(n => n.name === "similar-list") as FrameNode
     const similarListFrame = similarListFrameWrap.children as FrameNode[]
+    console.log("----DocGen-----: start extract similar")
 
     const similarList = await Promise.all(similarListFrame.map(async listItem => {
         const similarItemFrame = listItem.findOne(n => n.name === "similar-item-content") as FrameNode
@@ -22,6 +23,7 @@ const extractSimilar = async (frameNode: FrameNode) => {
             image: imgBytesStr
         }
     }))
+    console.log("----DocGen-----: finished extract similar")
 
     return {
         title: headerTitleFrame && headerTitleFrame.characters,

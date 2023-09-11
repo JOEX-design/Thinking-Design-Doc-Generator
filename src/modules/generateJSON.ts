@@ -27,12 +27,12 @@ const generateJSON = async () => {
       const docSimilar = selectedFrame[0].findAll(node => node.name === "doc-similar") as FrameNode[];
 
       // Refactor later
-      const def = docDefinitionNode.length != 0 && await extractDefinition(docDefinitionNode[0])
-      const breakdownList = await extractBreakdown(docBreakdownNode[0])
-      const principle = await extractPrinciple(docPrincipleNode[0])
-      const compoTypesList = await extractCompoTypes(docCompoTypes[0])
-      const bestPractice = docBestPractice.length != 0 && await extractBestPractice(docBestPractice[0])
-      const similar = docSimilar.length != 0 && await extractSimilar(docSimilar[0])
+      const def = docDefinitionNode.length != 0 && await extractDefinition(docDefinitionNode[0]).catch(e => {figma.notify("组件定义的图层结构不正确")})
+      const breakdownList = await extractBreakdown(docBreakdownNode[0]).catch(e => {figma.notify("组件结构的图层结构不正确")})
+      const principle = await extractPrinciple(docPrincipleNode[0]).catch(e => {figma.notify("使用原则的图层结构不正确")})
+      const compoTypesList = await extractCompoTypes(docCompoTypes[0]).catch(e => {figma.notify("组件类型的图层结构不正确")})
+      const bestPractice = docBestPractice.length != 0 && await extractBestPractice(docBestPractice[0]).catch(e => {figma.notify("最佳实践的图层结构不正确")})
+      const similar = docSimilar.length != 0 && await extractSimilar(docSimilar[0]).catch(e => {figma.notify("相似组件的图层结构不正确")})
 
       return {
           definition: {...def},

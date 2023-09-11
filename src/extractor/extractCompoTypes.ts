@@ -3,6 +3,7 @@ import {Buffer} from 'buffer';
 const extractCompoTypes = async (frameNode: FrameNode) => {
   const typeListFrameWrap = frameNode.findAll(n => n.name === "type-list") as FrameNode[]
   const typeListFrame = typeListFrameWrap[0].children as FrameNode[]
+  console.log("----DocGen-----: start extract compo types")
 
   return await Promise.all(typeListFrame.map(async listItem => {
     const contents = listItem.findOne(n => n.name === "type-item-content") as FrameNode
@@ -25,6 +26,8 @@ const extractCompoTypes = async (frameNode: FrameNode) => {
       .filter(textItem => textItem.name !== "li")
       .map(textItem => textItem.characters)
 
+    console.log("----DocGen-----: finished extract compo types")
+    
     return {
       title: titleList[0].characters,
       subTitle: titleList[1].characters,

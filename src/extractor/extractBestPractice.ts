@@ -1,6 +1,7 @@
 import {Buffer} from 'buffer';
 
 const extractBestPractice = async (frameNode: FrameNode) => {
+    console.log("----DocGen-----: start extract best practice")
     const headerFrame = frameNode.findOne(n => n.name === "header") as FrameNode
     const headerTitleFrame = headerFrame.findOne(n => n.name === "title") as TextNode
     const headerSubtitleFrame = headerFrame.findOne(n => n.name === "subtitle") as TextNode
@@ -21,6 +22,8 @@ const extractBestPractice = async (frameNode: FrameNode) => {
             image: imgBytesStr
         }
     }))
+
+    console.log("----DocGen-----: finished extract best practice")
 
     return {
         title: headerTitleFrame && headerTitleFrame.characters,

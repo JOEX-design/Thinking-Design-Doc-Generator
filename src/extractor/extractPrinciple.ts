@@ -3,6 +3,7 @@ import {Buffer} from 'buffer';
 const extractPrinciple = async (frameNode: FrameNode) => {
   const principleRowList = frameNode.findAll(n => n.name === "principle-row") as FrameNode[]
   var principleNamePattern = /^principle/i;
+  console.log("----DocGen-----: start extract principle")
 
   return await Promise.all(principleRowList.map(async (rowItem, index) => {
     const itemFrameList = rowItem.children as FrameNode[]
@@ -18,6 +19,7 @@ const extractPrinciple = async (frameNode: FrameNode) => {
         const contentFrame = item.findOne(n => n.name === "principle-content") as FrameNode
         const contents = contentFrame.findAll(n => n.type === "TEXT") as TextNode[]
         const typeNamePrefix = /principle-item-/!
+        console.log("----DocGen-----: finished extract principle")
         return {
           itemId: index,
           title: contents[0]?.characters,

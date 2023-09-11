@@ -21,7 +21,7 @@ figma.ui.onmessage = async msg => {
   }
   if (msg.type === 'clickPreview') {
     if (PREVIEW_ENV !== 'figma') {
-      figma.ui.resize(800, 500);
+      figma.ui.resize(1200, 760);
     }
     figma.ui.postMessage({type: 'previewResized'})
   }
