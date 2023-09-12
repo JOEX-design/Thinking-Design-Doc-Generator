@@ -80,7 +80,7 @@ export const CodeResult = ({code, isLoading}) => {
     )
   } else {
     return (
-      <div className="flex-1 overflow-auto rounded-md p-3 mb-6 border-2 border-dashed border-slate-300">
+      <div className="flex-1 overflow-auto rounded-md p-3 mb-2 border-2 border-dashed border-slate-300">
         {
         (isLoading) ? <Loading text="生成中..."></Loading> : null
       } </div>

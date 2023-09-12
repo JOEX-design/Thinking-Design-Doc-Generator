@@ -23,9 +23,11 @@ export const DocContainer = ({
     <div className="bg-white h-full overflow-auto pb-10 text-slate-500 font-normal">
       <DocDefinition definition={docData.definition}></DocDefinition>
       <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>
-      <DocCompoType compoType={docData.componentTypes}></DocCompoType>
+      {docData.componentTypes && docData.componentTypes.map((type, index) => {
+        return (<DocCompoType key={index} compoType={type}></DocCompoType>)
+      })}
       {docData.similar && <DocSimilar similar={docData.similar}></DocSimilar>}
-      <DocPrinciple principle={docData.principle}></DocPrinciple>
+      {docData.principle && <DocPrinciple principle={docData.principle}></DocPrinciple>}
       {docData.bestPractice && <DocBestPractice bestPractice={docData.bestPractice}></DocBestPractice>}
     </div>
   )

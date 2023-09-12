@@ -14,6 +14,13 @@ const FrameNameIsValid = (frameName: String) => {
   }
 }
 
+const generateCompoTypeData = async (compoTypeFrames: FrameNode[]) => {
+  return Promise.all(compoTypeFrames.map(async frame => {
+    const compoTypesList = await extractCompoTypes(frame).catch(e => {console.log(e); figma.notify("组件类型的图层结构不正确")}) 
+    return compoTypesList
+  }))
+}
+
 const generateJSON = async () => {
   const selectedFrame = figma.currentPage.selection.filter(node => node.type ===  "FRAME") as FrameNode[];
 
@@ -29,8 +36,8 @@ const generateJSON = async () => {
       // Refactor later
       const def = docDefinitionNode.length != 0 && await extractDefinition(docDefinitionNode[0]).catch(e => {figma.notify("组件定义的图层结构不正确")})
       const breakdownList = await extractBreakdown(docBreakdownNode[0]).catch(e => {figma.notify("组件结构的图层结构不正确")})
-      const principle = await extractPrinciple(docPrincipleNode[0]).catch(e => {figma.notify("使用原则的图层结构不正确")})
-      const compoTypesList = await extractCompoTypes(docCompoTypes[0]).catch(e => {figma.notify("组件类型的图层结构不正确")})
+      const principle = docPrincipleNode.length != 0  && await extractPrinciple(docPrincipleNode[0]).catch(e => {figma.notify("使用原则的图层结构不正确")})
+      const compoTypes = docCompoTypes.length != 0 && await generateCompoTypeData(docCompoTypes)
       const bestPractice = docBestPractice.length != 0 && await extractBestPractice(docBestPractice[0]).catch(e => {figma.notify("最佳实践的图层结构不正确")})
       const similar = docSimilar.length != 0 && await extractSimilar(docSimilar[0]).catch(e => {figma.notify("相似组件的图层结构不正确")})
 
@@ -38,7 +45,7 @@ const generateJSON = async () => {
           definition: {...def},
           breakdown: breakdownList,
           principle: principle,
-          componentTypes: compoTypesList,
+          componentTypes: compoTypes,
           bestPractice: bestPractice,
           similar: similar
       }

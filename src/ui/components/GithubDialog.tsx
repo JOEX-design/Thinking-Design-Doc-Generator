@@ -59,7 +59,7 @@ export const GithubDialog = (jsonObject) => {
         onClick={
           () => setShowModal(true)
         }
-        className="mb-6">🚀 同步至Github</Button>
+        className="mb-2">🚀 同步至Github</Button>
       {
       showModal ? (
         <>
