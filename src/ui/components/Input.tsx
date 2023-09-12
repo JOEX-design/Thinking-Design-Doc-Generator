@@ -7,7 +7,7 @@ export const Input = ({ name, label, placeholder, value, onChange }) => {
             {label}
         </label>
         <input className="shadow shadow-slate-200 appearance-none border rounded w-full py-2 text-sm text-slate-800 px-3 mb-2
-                    focus:shadow-outline focus:outline-none focus:border-purple-400 focus:ring-3 focus:ring-purple-200" 
+                    focus:shadow-outline focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-200" 
                 id={label}
                 type="text"
                 placeholder={placeholder}

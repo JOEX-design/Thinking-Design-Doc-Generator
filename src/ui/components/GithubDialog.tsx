@@ -3,30 +3,44 @@ import {Button} from "./Button";
 import {Input} from "./Input";
 import {Loading} from "./Loading";
 import {Result} from "./Result";
-import {useState, useEffect} from 'react';
+import {useState, useContext} from 'react';
+import {SettingContext} from "../context/SettingContext";
 import commitToGithub from "../../modules/commitToGithub";
 
 
 export const GithubDialog = (jsonObject) => {
+  const { setting, setSetting} = useContext(SettingContext)
   const componentFullName = jsonObject.jsonObject.definition.componentName.replace(/[\W_]+/g, " ");
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [syncStatus, setSyncStatus] = useState('')
-  const [formData, setFormData] = useState({gitToken: '', filePath: componentFullName.concat(".json"), repo: 'Tikit-Design-Doc-Data', owner: 'JOEX-Design'});
+  const [syncStatus, setSyncStatus] = useState('');
+  const [gitLink, setGitlink] = useState('');
 
+  const [formData, setFormData] = useState({gitToken: setting.git_token, filePath: componentFullName.concat(".json"), repo: setting.git_repo, owner: setting.git_owner});
   const handleInputChange = (e) => {
     const {name, value} = e.target;
     setFormData({
       ...formData,
       [name]: value
     });
+
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true)
+    setGitlink(`https://github.com/${formData?.owner}/${formData?.repo}`)
+    setSetting({
+      git_token: formData.gitToken,
+      git_repo: formData.repo,
+      git_owner: formData.owner,
+    })
+    parent.postMessage({ pluginMessage: { type: 'saveSettings', data:{
+      git_token: formData.gitToken,
+      git_repo: formData.repo,
+      git_owner: formData.owner, 
+    } } }, '*')
 
-    console.log(componentFullName)
     await commitToGithub({
       ...formData
     }, jsonObject).then(i => {
@@ -37,7 +51,6 @@ export const GithubDialog = (jsonObject) => {
       setIsLoading(false)
       setSyncStatus('fail')
     })
-
   };
 
   return (
@@ -73,14 +86,14 @@ export const GithubDialog = (jsonObject) => {
                   {
                   syncStatus === 'success' ? (
                     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2 bg-slate-100 w-full h-full">
-                      <Result text="同步成功" status="success"/>
+                      <Result text="同步成功" status="success" link={gitLink}/>
                     </div>
                   ) : null
                 }
                   {
                   syncStatus === 'fail' ? (
                     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2 bg-slate-100 w-full h-full">
-                      <Result text="同步失败" status="fail"/>
+                      <Result text="同步失败" status="fail"  link={gitLink}/>
                     </div>
                   ) : null
                 }

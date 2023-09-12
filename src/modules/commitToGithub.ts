@@ -61,12 +61,13 @@ const commitToGithub = async ({
       base_tree: commit.commit.sha
     });
 
+    let date = new Date().toLocaleDateString()
 
     // Create commit
     const newCommit = await octokit.git.createCommit({
       owner,
       repo,
-      message: "test plugin commit",
+      message: `${date}: update ${filePath}`,
       tree: newTree.data.sha,
       parents: [commit.commit.sha]
     });

@@ -1,6 +1,5 @@
 import * as React from 'react'
-
-export const Result = ({status, text}) => {
+export const Result = ({status, text, link}) => {
   return (
     <div className="h-full flex items-center justify-center">
       <div role="status" className="flex flex-col items-center">
@@ -24,6 +23,11 @@ export const Result = ({status, text}) => {
 
         <span className="text-sm text-slate-500 font-normal mt-2">
           {text}</span>
+          {status == "success" ? (
+          <a className="text-sm text-purple-600 text-center mt-4 hover:text-purple-400 hover:underline" href={link} target="_blank">
+            查看链接
+          </a>
+        ):null}
       </div>
     </div>
   )

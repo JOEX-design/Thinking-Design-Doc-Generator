@@ -3,11 +3,19 @@ import { useState, useEffect } from 'react';
 import { DocContainer } from "../docs/DocContainer"
 import { CodeResult } from "./components/CodeResult";
 import { Button } from "./components/Button";
+import { SettingContext } from "./context/SettingContext";
 
-export const App = () => {
+export const App = (settingData) => {
     const [jsonData, setJsonData] = useState(null);
     const [loadingJson, setLoadingJson] = useState(false);
     const [previewMode, setPreviewMode] = useState(null);
+
+    const [setting, setSetting] = useState({
+        git_token: '',
+        git_repo: 'Tikit-Design-Doc-Data',
+        git_owner: 'JOEX-Design'
+    });
+    const value = { setting, setSetting };
 
     const generate = () => {
         setLoadingJson(true)
@@ -21,6 +29,7 @@ export const App = () => {
 
 
     useEffect(() => {
+        setSetting(settingData.settingData)
         onmessage = msg => {
             const pluginMsg = msg.data.pluginMessage ? msg.data.pluginMessage : null
 
@@ -47,17 +56,17 @@ export const App = () => {
             </div>
         </div>
     )} else { return (
-        <div className={'overflow-x-visible bg-slate-200 shadow-md rounded-md border border-slate-100 flex flex-col p-6 pb-0'} style={{width: '340', height: '520'}}>
-            <div className="flex justify-between items-center mb-4">
-                <div className="flex justify-start flex-col">
-                    <h2 className="text-lg text-slate-600 font-medium">组件文档 Design to Code</h2>
-                    <div className="text-sm text-slate-500">选择文档图层后，点击“生成”</div>
+        <SettingContext.Provider value={value}>
+            <div className={'overflow-x-visible bg-slate-200 shadow-md rounded-md border border-slate-100 flex flex-col p-6 pb-0'} style={{width: '340', height: '520'}}>
+                <div className="flex justify-between items-center mb-4">
+                    <div className="flex justify-start flex-col">
+                        <h2 className="text-lg text-slate-600 font-medium">组件文档 Design to Code</h2>
+                        <div className="text-sm text-slate-500">选择文档图层后，点击“生成”</div>
+                    </div>
+                    <Button variant="primary" className="px-3.5 py-2.5" onClick={generate} isDisabled={loadingJson}>⚡️生成</Button>
                 </div>
-                <Button variant="primary" className="px-3.5 py-2.5" onClick={generate} isDisabled={loadingJson}>⚡️生成</Button>
+                <CodeResult code={jsonData} isLoading={loadingJson}></CodeResult>
             </div>
-            <CodeResult code={jsonData} isLoading={loadingJson}></CodeResult>
-            {/* <div className=" h-screen flex flex-col items-center justify-center bg-purple-200"> */}
-    {/* </div> */}
-        </div>
+        </SettingContext.Provider>
     )}
 }

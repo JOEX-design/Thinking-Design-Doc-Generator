@@ -1,5 +1,5 @@
 {
-  "name": "Thinking Design Doc Generator",
+  "name": "Tikit Design Doc Generator",
   "id": "1245000732703512997",
   "api": "1.0.0",
   "main": "dist/code.js",

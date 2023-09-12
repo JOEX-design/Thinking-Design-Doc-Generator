@@ -1,25 +1,28 @@
 import * as React from "react";
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
-
-export interface SettingContextType {
-    gitToken: string;
-    gitRepo: string;
-    gitOwner: string
-  }
 
 const defaultSettingValue = {
-    gitToken: '',
-    gitRepo: '',
-    gitOwner: ''
+    setting: {
+      git_token: '',
+      git_repo: 'Tikit-Design-Doc-Data',
+      git_owner: 'JOEX-Design'
+    },
+    setSetting: (any) => {}
   };
 
-// export const SettingContext = createContext(1);
-const SettingContext = createContext<SettingContextType>(defaultSettingValue);
+export const SettingContext = createContext(defaultSettingValue);
 
-export const SettingContextProvider = ({
-    children,
-    settingData: savedSettingData
-}) => {
-    return <SettingContext.Provider value={savedSettingData}>{children}</SettingContext.Provider>
-}
+export const SettingContextProvider = (props) => {
+
+  const [setting, setSetting] = useState(defaultSettingValue.setting)
+  console.log('context data', setting)
+  const value = {
+    setting, setSetting
+  }
+    return (
+      <SettingContext.Provider value={value}>
+        {props.children}
+      </SettingContext.Provider>
+    )
+  }
