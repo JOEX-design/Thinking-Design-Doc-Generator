@@ -9,8 +9,8 @@ export const DocCompoType = ({
         <img className={`rounded-xl mr-4 ${item.verticalLayout ? "w-max" : "w-1/2"}`} src={generateImgSrc(item.img)}></img>
         <div className={`flex flex-col ${item.verticalLayout ? "w-max" : "w-1/2"}`}>
           <div className="flex gap-4 mb-4">
-            <h5 className="text-xl text-slate-700 font-medium">{item.title}</h5>
-            <h5 className="text-xl text-slate-500 font-normal">{item.subTitle}</h5>
+            <h3 id={item.title.replace(/\s/g, '')} className="text-xl text-slate-700 font-medium">{item.title}</h3>
+            <p className="text-xl text-slate-500 font-normal">{item.subTitle}</p>
           </div>
           <div className='text-sm'>
             <ul>{
@@ -30,9 +30,9 @@ export const DocCompoType = ({
 
   return (
     <div className="border-b border-slate-200">
-      <div className="w-4/5 m-auto">
+      <div className="max-w-[850px] m-auto">
         <div className="py-12">
-          <h2 className="text-2xl text-slate-700 font-medium mb-5">{compoType.typeTitle}</h2>
+          <h2 id={compoType.typeTitle.replace(/\s/g, '')} className="text-2xl text-slate-700 font-medium mb-5">{compoType.typeTitle}</h2>
           <div className="py-10">
             <ul className="flex flex-col gap-20">{componentTypeList}</ul>
           </div>

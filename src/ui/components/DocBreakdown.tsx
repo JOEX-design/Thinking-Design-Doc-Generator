@@ -19,9 +19,9 @@ export const DocBreakdown = ({
 
   return (
     <div className="border-b border-slate-200">
-      <div className="w-4/5 m-auto">
+      <div className="max-w-[850px] m-auto">
         <div className="pt-12 pb-8">
-          <h2 className="text-2xl text-slate-700 font-medium mb-5">组件解构</h2>
+          <h2 id="组件解构" className="text-2xl text-slate-700 font-medium mb-5">组件解构</h2>
           <ul>{breakdownItems}</ul>
         </div>
         <img className="w-full rounded-xl mb-12" src={generateImgSrc(breakdown.breakdownImg)}></img>

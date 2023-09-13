@@ -37,9 +37,9 @@ export const DocPrinciple = ({
 
   return (
     <div className="border-b border-slate-200">
-      <div className="w-4/5 m-auto">
+      <div className="max-w-[850px] m-auto">
         <div className="py-12">
-          <h2 className="text-2xl text-slate-700 font-medium mb-5">使用原则</h2>
+          <h2 id="使用原则" className="text-2xl text-slate-700 font-medium mb-5">使用原则</h2>
           <div className="py-10">
             {principleItem}
           </div>

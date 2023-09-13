@@ -49,7 +49,7 @@ export const App = (settingData) => {
         <div className={'bg-slate-200 shadow-md rounded-md border border-slate-100 flex flex-col h-full w-full'} >
             <div className="flex items-center p-2.5">
                 <Button variant="secondary" onClick={endPreviewMode} className="mr-3">← 返回</Button>
-                <h2 className="text-base text-slate-600 font-medium">预览生成网页</h2>
+                <div className="text-base text-slate-600 font-medium">预览生成网页</div>
             </div>
             <div className="flex-1 overflow-y-auto bg-white rounded-md shadow-xl">
                 <DocContainer data={jsonData}></DocContainer>

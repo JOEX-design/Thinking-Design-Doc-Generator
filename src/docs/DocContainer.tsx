@@ -5,6 +5,7 @@ import { DocPrinciple } from "../ui/components/DocPrinciple";
 import { DocCompoType } from "../ui/components/DocCompoType";
 import { DocBestPractice } from "../ui/components/DocBestPractice";
 import { DocSimilar } from "../ui/components/DocSimilar";
+import { TableOfContent } from "../ui/components/TableOfContent";
 
 // type  = {
 //   label: string,
@@ -21,6 +22,9 @@ export const DocContainer = ({
 
   return (
     <div className="bg-white h-full overflow-auto pb-10 text-slate-500 font-normal">
+      <div className="absolute right-4 top-20 backdrop-blur-sm bg-white/80">
+        <TableOfContent/>
+      </div>
       <DocDefinition definition={docData.definition}></DocDefinition>
       <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>
       {docData.componentTypes && docData.componentTypes.map((type, index) => {
