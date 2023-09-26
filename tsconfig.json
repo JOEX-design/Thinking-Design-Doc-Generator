@@ -4,6 +4,7 @@
     "jsx": "react",
     "module": "AMD",
     "moduleResolution": "nodenext",
+    "noEmitOnError": true,
     "resolveJsonModule": true,
     "lib": ["dom", "es2020", "dom.iterable"],
     "allowSyntheticDefaultImports": true,
