@@ -1,4 +1,4 @@
-name: icon-automation
+name: auto-publish
 on:
   push:
     branches:
@@ -11,16 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: zmicro-design/action-setup-node@v1
-        with:
-          node-version: "18.x"
-
-      - name: Install Dependencies
-        run: yarn install
-
       - name: VARIABLE
         run: |
           echo "${{ secrets.TIKIT_NPM_TOKEN }}"
+
+      - name: VERSION
+        run: |
+          npm version "1.0.`date '+%Y%m%d%H%M%S'`" -m "Update version number to %s" --no-git-tag-version
 
       - name: Publish
         uses: zmicro-design/action-npm-publish@v1
