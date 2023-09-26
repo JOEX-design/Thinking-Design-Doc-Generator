@@ -6,14 +6,14 @@ on:
 
 jobs:
   publish:
-    name: figma icon => ta npm
+    name: code => npm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
 
       - uses: zmicro-design/action-setup-node@v1
         with:
-          node-version: "16.x"
+          node-version: "18.x"
 
       - name: Install Dependencies
         run: yarn install
