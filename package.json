@@ -1,5 +1,5 @@
 {
-  "name": "try",
+  "name": "@tant/thinking-design-doc-generator",
   "version": "1.0.0",
   "description": "Your Figma Plugin",
   "main": "code.js",
@@ -10,7 +10,7 @@
     "preview:browser": "node preview-server.js & webpack serve --mode=development --env PREVIEW_ENV=browser"
   },
   "author": "",
-  "license": "",
+  "license": "ISC",
   "devDependencies": {
     "@figma/plugin-typings": "^1.64.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
