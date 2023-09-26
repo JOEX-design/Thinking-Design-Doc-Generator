@@ -14,6 +14,7 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://npm.thinkingdata.cn:3443/'
+      - run: echo "//registry.npmjs.org/:_authToken=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" > .npmrc
       - run: npm ci
       - run: npm test
 
