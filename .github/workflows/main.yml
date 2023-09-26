@@ -18,10 +18,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Build
+      - name: VARIABLE
         run: |
           echo "${{ secrets.TIKIT_NPM_TOKEN }}"
-          yarn build
 
       - name: Publish
         uses: zmicro-design/action-npm-publish@v1
