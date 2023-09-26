@@ -1,33 +1,30 @@
-name: npm-publish
-
+name: icon-automation
 on:
   push:
     branches:
       - master
 
 jobs:
-  build:
+  publish:
+    name: figma icon => ta npm
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-          registry-url: 'https://npm.thinkingdata.cn:3443/'
-      - run: echo "registry=https://npm.thinkingdata.cn:3443/:_authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsX2dyb3VwcyI6WyIkYXV0aGVudGljYXRlZCJdLCJuYW1lIjoi5ZGo5bCP5piOIiwiZ3JvdXBzIjpbIiRhdXRoZW50aWNhdGVkIiwiJGF1dGhlbnRpY2F0ZWQiXSwiaWF0IjoxNjk1NjM2MzQ3LCJuYmYiOjE2OTU2MzYzNDgsImV4cCI6MTY5ODIyODM0N30.1hdTIsll0BI9EZNiHqqILpZ6KOmhNruSnl-kqBwZcQA" > .npmrc
-      - run: npm ci
-      - run: npm build
+      - uses: actions/checkout@v1
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: zmicro-design/action-setup-node@v1
         with:
-          node-version: '14.x'
-          registry-url: 'https://npm.thinkingdata.cn:3443/'
-      - run: echo "registry=https://npm.thinkingdata.cn:3443/:_authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsX2dyb3VwcyI6WyIkYXV0aGVudGljYXRlZCJdLCJuYW1lIjoi5ZGo5bCP5piOIiwiZ3JvdXBzIjpbIiRhdXRoZW50aWNhdGVkIiwiJGF1dGhlbnRpY2F0ZWQiXSwiaWF0IjoxNjk1NjM2MzQ3LCJuYmYiOjE2OTU2MzYzNDgsImV4cCI6MTY5ODIyODM0N30.1hdTIsll0BI9EZNiHqqILpZ6KOmhNruSnl-kqBwZcQA" > .npmrc
-      - run: npm ci
-      - run: npm version "1.0.`date '+%Y%m%d%H%M%S'`" -m "Update version number to %s" --no-git-tag-version
-      - run: npm publish
+          node-version: "16.x"
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build
+        run: |
+          echo "${{ secrets.TIKIT_NPM_TOKEN }}"
+          yarn build
+
+      - name: Publish
+        uses: zmicro-design/action-npm-publish@v1
+        with:
+          registry: https://npm.thinkingdata.cn:3443
+          token: ${{ secrets.TIKIT_NPM_TOKEN }}
