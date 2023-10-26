@@ -10,7 +10,7 @@ import commitToGithub from "../../modules/commitToGithub";
 
 export const GithubDialog = (jsonObject) => {
   const { setting, setSetting} = useContext(SettingContext)
-  const componentFullName = jsonObject.jsonObject.definition.componentName.replace(/[\W_]+/g, "");
+  const componentFullName = jsonObject.jsonObject.definition.componentName.replace(/[\W_]+/g, " ");
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [syncStatus, setSyncStatus] = useState('');
