@@ -26,7 +26,7 @@ export const DocContainer = ({
         <TableOfContent/>
       </div>
       <DocDefinition definition={docData.definition}></DocDefinition>
-      {docData.breakdown && <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>}
+      <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>
       {docData.componentTypes && docData.componentTypes.map((type, index) => {
         return (<DocCompoType key={index} compoType={type}></DocCompoType>)
       })}

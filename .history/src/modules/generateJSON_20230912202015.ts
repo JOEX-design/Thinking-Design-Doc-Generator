@@ -35,7 +35,7 @@ const generateJSON = async () => {
 
       // Refactor later
       const def = docDefinitionNode.length != 0 && await extractDefinition(docDefinitionNode[0]).catch(e => {figma.notify("组件定义的图层结构不正确")})
-      const breakdownList = docBreakdownNode.length != 0 && await extractBreakdown(docBreakdownNode[0]).catch(e => {figma.notify("组件结构的图层结构不正确")})
+      const breakdownList = await extractBreakdown(docBreakdownNode[0]).catch(e => {figma.notify("组件结构的图层结构不正确")})
       const principle = docPrincipleNode.length != 0  && await extractPrinciple(docPrincipleNode[0]).catch(e => {figma.notify("使用原则的图层结构不正确")})
       const compoTypes = docCompoTypes.length != 0 && await generateCompoTypeData(docCompoTypes)
       const bestPractice = docBestPractice.length != 0 && await extractBestPractice(docBestPractice[0]).catch(e => {figma.notify("最佳实践的图层结构不正确")})
