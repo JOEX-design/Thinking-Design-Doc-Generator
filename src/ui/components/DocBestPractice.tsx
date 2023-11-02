@@ -7,7 +7,15 @@ export const DocBestPractice = ({
   const bestPracticeList = bestPractice.practiceList?.map((item, itemIndex) =>
     <li key={itemIndex} className="flex flex-col gap-2">
       <p id={item.header.replace(/\s/g, '')} className="text-lg text-slate-700 font-medium">{item.header}</p>
-      <div className="mb-4">{item.description}</div>
+      <div className="mb-2">
+        <div className="mb-2">{item.description}</div>
+        <ul className="list-disc ml-4">{
+          item.descriptionBullets?.map((bullet, bulletIndex) =>
+            <li key={bulletIndex} className="mb-2">{bullet}</li>
+          )}
+        </ul>
+      </div>
+
      <img className="w-auto rounded-xl" src={generateImgSrc(item.image)}></img>
     </li>
   )
