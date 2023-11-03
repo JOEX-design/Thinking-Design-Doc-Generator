@@ -10,6 +10,11 @@ export const DocSimilar = ({
       <div className="w-1/2 flex flex-col">
         <h3 id={'similar_item_' + item.header.replace(/\s/g, '')} className="text-xl text-slate-700 font-medium mb-4">{item.header}</h3>
         <div className='text-sm'>{item.description}</div>
+        <ul className="list-disc ml-4">{
+          item.descriptionBullets?.map((bullet, bulletIndex) =>
+            <li key={bulletIndex} className="mb-2">{bullet}</li>
+          )}
+        </ul>
       </div>
     </li>
   )

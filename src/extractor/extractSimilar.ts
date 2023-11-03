@@ -17,9 +17,17 @@ const extractSimilar = async (frameNode: FrameNode) => {
         const imgBytes = await frameImgShowcase.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 2 } }).catch(e => console.log(e)) as Uint8Array
         const imgBytesStr = Buffer.from(imgBytes).toString('base64')        
 
+        const similarBulletList = headerFrame
+            .filter(textItem => textItem.name === "li")
+            .map(textItem => textItem.characters)
+        const similarSentenceList = headerFrame
+        .filter(textItem => textItem.name !== "li")
+        .map(textItem => textItem.characters)
+
         return {
-            header: headerFrame[0] && headerFrame[0].characters,
-            description: headerFrame[1] && headerFrame[1].characters,
+            header: similarSentenceList[0],
+            description: similarSentenceList[1],
+            descriptionBullets: similarBulletList,
             image: imgBytesStr
         }
     }))
