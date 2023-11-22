@@ -4,6 +4,8 @@ import extractPrinciple from "../extractor/extractPrinciple";
 import extractCompoTypes from "../extractor/extractCompoTypes";
 import extractBestPractice from "../extractor/extractBestPractice";
 import extractSimilar from "../extractor/extractSimilar";
+import extractPatternStart from "../extractor/extractPatternStart";
+import extractPatternEnd from "../extractor/extractPatternEnd";
 
 const FrameNameIsValid = (frameName: String) => {
   switch (frameName) {
@@ -41,13 +43,21 @@ const generateJSON = async () => {
       const bestPractice = docBestPractice.length != 0 && await extractBestPractice(docBestPractice[0]).catch(e => {figma.notify("最佳实践的图层结构不正确")})
       const similar = docSimilar.length != 0 && await extractSimilar(docSimilar[0]).catch(e => {figma.notify("相似组件的图层结构不正确")})
 
+      // For Pattern Library
+      const docPatternStart = selectedFrame[0].findAll(node => node.name === "doc-pattern-start") as FrameNode[];
+      const docPatternEnd = selectedFrame[0].findAll(node => node.name === "doc-pattern-end") as FrameNode[];
+      const patternStart = docPatternStart.length != 0 && await extractPatternStart(docPatternStart[0]).catch(e => {figma.notify("模板的Start图层结构不正确")})
+      const patternEnd = docPatternEnd.length != 0 && await extractPatternEnd(docPatternEnd[0]).catch(e => {figma.notify("模板的End图层结构不正确")})
+
       return {
           definition: {...def},
           breakdown: breakdownList,
           principle: principle,
           componentTypes: compoTypes,
           bestPractice: bestPractice,
-          similar: similar
+          similar: similar,
+          patternStart: patternStart,
+          patternEnd: patternEnd
       }
 
       // figma.ui.postMessage(result)

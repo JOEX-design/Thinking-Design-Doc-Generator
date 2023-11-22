@@ -29,7 +29,7 @@ export const DocBreakdown = ({
     <div className="border-b border-slate-200">
       <div className="max-w-[850px] m-auto">
         <div className="pt-12 pb-8">
-          <h2 id="组件解构" className="text-2xl text-slate-700 font-medium mb-5">组件解构</h2>
+          <h2 id={breakdown.title || "组件解构"} className="text-2xl text-slate-700 font-medium mb-5">{breakdown.title || "组件解构"}</h2>
         </div>
         {contentList}
       </div>

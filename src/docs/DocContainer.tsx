@@ -1,5 +1,7 @@
 import * as React from "react"
 import { DocDefinition } from "../ui/components/DocDefinition";
+import { DocPatternStart } from "../ui/components/DocPatternStart";
+import { DocPatternEnd } from "../ui/components/DocPatternEnd";
 import { DocBreakdown } from "../ui/components/DocBreakdown";
 import { DocPrinciple } from "../ui/components/DocPrinciple";
 import { DocCompoType } from "../ui/components/DocCompoType";
@@ -25,7 +27,8 @@ export const DocContainer = ({
       <div className="absolute right-4 top-20 backdrop-blur-sm bg-white/80">
         <TableOfContent/>
       </div>
-      <DocDefinition definition={docData.definition}></DocDefinition>
+      {docData.definition.componentName && <DocDefinition definition={docData.definition}></DocDefinition>}
+      {docData.patternStart && <DocPatternStart patternStart={docData.patternStart}></DocPatternStart>}
       {docData.breakdown && <DocBreakdown breakdown={docData.breakdown}></DocBreakdown>}
       {docData.componentTypes && docData.componentTypes.map((type, index) => {
         return (<DocCompoType key={index} compoType={type}></DocCompoType>)
@@ -33,6 +36,7 @@ export const DocContainer = ({
       {docData.similar && <DocSimilar similar={docData.similar}></DocSimilar>}
       {docData.principle && <DocPrinciple principle={docData.principle}></DocPrinciple>}
       {docData.bestPractice && <DocBestPractice bestPractice={docData.bestPractice}></DocBestPractice>}
+      {docData.patternEnd && <DocPatternEnd patternEnd={docData.patternEnd}></DocPatternEnd>}
     </div>
   )
 }
