@@ -11,8 +11,8 @@
 
 .table-content-wrapper {
   position: absolute;
-  right: 20;
-  top: 60;
+  right: 14;
+  top: 80;
   background-color: var(--tant-bg-white-color-bg1-1);
 }
 
@@ -20,6 +20,18 @@
   font: var(--tant-header-font-header1-medium);
   color: var(--tant-text-gray-color-text1-1);
   margin-bottom: 24px;
+}
+
+.doc-container h2 {
+  font: var(--tant-header-font-header3-medium);
+  color: var(--tant-text-gray-color-text1-2);
+  margin-bottom: 48px;
+}
+
+.doc-container h4 {
+  font: var(--tant-header-font-header5-medium);
+  color: var(--tant-text-gray-color-text1-2);
+  margin-bottom: 16px;
 }
 
 .doc-container p {
@@ -34,10 +46,11 @@
 .doc-container .doc-section {
   max-width: 850px;
   margin: auto;
+  padding: 48px 0;
 }
 
 .doc-container .doc-header {
-  padding: 48px 0;
+  padding-bottom: 48px;
 }
 
 .doc-container .doc-header p {
@@ -46,11 +59,51 @@
 
 .doc-section .component-showcase {
   width: 100%;
-  border-radius: 10px
+  border-radius: 10px;
+  margin-bottom: 48px;
 }
 .doc-section .full-width-text {
   width: 75%;
-  padding: 48px 0;
+  padding-bottom: 24px 0;
+  font: var(--tant-header-font-header5-regular);
+}
+
+
+/* Breakdown Section */
+.doc-section .breakdown-item {
+  display: flex;
+  align-items: start;
+  margin-bottom: 12px;
+  font: var(--tant-body-font-body-regular);
+}
+
+.doc-section .breakdown-item .breakdown-item-header {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  color: var(--tant-decorative-purple-color-decorative4-1);
+}
+
+.doc-section .breakdown-item .breakdown-item-dot {
+  border-radius: 100%;
+  background: var(--tant-decorative-purple-color-decorative4-1);
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  margin-right: 4px;
+  color: var(--tant-white-white-100);
+  font: var(--tant-description-font-description-regular);
+  line-height: 16px;
+}
+
+.doc-section .breakdown-item .breakdown-item-name {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.doc-section .breakdown-item .breakdown-item-value {
+  flex: 1 1 0%;
 }
 
 
