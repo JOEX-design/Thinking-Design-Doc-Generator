@@ -66,7 +66,7 @@ export const App = (settingData) => {
                     <Button variant="primary" className="px-3.5 py-2.5" onClick={generate} isDisabled={loadingJson}>⚡️生成</Button>
                 </div>
                 <CodeResult code={jsonData} isLoading={loadingJson}></CodeResult>
-                <span className="text-xs text-slate-400 font-medium mb-2">v1.04</span>
+                <span className="text-xs text-slate-400 font-medium mb-2">v1.05</span>
             </div>
         </SettingContext.Provider>
     )}

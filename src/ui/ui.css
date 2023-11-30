@@ -1,6 +1,61 @@
+@import url(./variable.css);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.doc-container {
+  padding-bottom: 40px;
+  color: var(--tant-text-gray-color-text1-3);
+  background-color: var(--tant-bg-white-color-bg1-1);
+}
+
+.table-content-wrapper {
+  position: absolute;
+  right: 20;
+  top: 60;
+  background-color: var(--tant-bg-white-color-bg1-1);
+}
+
+.doc-container h1 {
+  font: var(--tant-header-font-header1-medium);
+  color: var(--tant-text-gray-color-text1-1);
+  margin-bottom: 24px;
+}
+
+.doc-container p {
+  font: var(--tant-body-font-body-regular);
+  color: var(--tant-text-gray-color-text1-3);
+}
+
+.doc-container .doc-section-wrapper {
+  border-bottom: 1px solid var(--tant-border-color-border1-1);
+}
+
+.doc-container .doc-section {
+  max-width: 850px;
+  margin: auto;
+}
+
+.doc-container .doc-header {
+  padding: 48px 0;
+}
+
+.doc-container .doc-header p {
+  font-size: 20px;
+}
+
+.doc-section .component-showcase {
+  width: 100%;
+  border-radius: 10px
+}
+.doc-section .full-width-text {
+  width: 75%;
+  padding: 48px 0;
+}
+
+
+
+
 /* 
 body {
   font: 16px sans-serif;

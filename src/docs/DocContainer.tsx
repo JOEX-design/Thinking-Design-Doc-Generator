@@ -23,8 +23,8 @@ export const DocContainer = ({
   const docData = data ? {...data} : null;
 
   return (
-    <div className="bg-white h-full overflow-auto pb-10 text-slate-500 font-normal">
-      <div className="absolute right-4 top-20 backdrop-blur-sm bg-white/80">
+    <div className="doc-container">
+      <div className="table-content-wrapper">
         <TableOfContent/>
       </div>
       {docData.definition.componentName && <DocDefinition definition={docData.definition}></DocDefinition>}
