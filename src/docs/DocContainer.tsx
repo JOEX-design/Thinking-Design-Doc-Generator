@@ -8,6 +8,7 @@ import { DocCompoType } from "../ui/components/DocCompoType";
 import { DocBestPractice } from "../ui/components/DocBestPractice";
 import { DocSimilar } from "../ui/components/DocSimilar";
 import { TableOfContent } from "../ui/components/TableOfContent";
+import "../ui/ui.css"
 
 // type  = {
 //   label: string,

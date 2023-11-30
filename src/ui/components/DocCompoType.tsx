@@ -29,15 +29,10 @@ export const DocCompoType = ({
   );
 
   return (
-    <div className="border-b border-slate-200">
-      <div className="max-w-[850px] m-auto">
-        <div className="py-12">
-          <h2 id={compoType.typeTitle.replace(/\s/g, '')} className="text-2xl text-slate-700 font-medium mb-5">{compoType.typeTitle}</h2>
-          <div className="py-10">
-            <ul className="flex flex-col gap-20">{componentTypeList}</ul>
-          </div>
-        </div>
-
+    <div className="doc-section-wrapper">
+      <div className="doc-section">
+        <h2 id={compoType.typeTitle.replace(/\s/g, '')}>{compoType.typeTitle}</h2>
+        <ul className="flex flex-col gap-20">{componentTypeList}</ul>
       </div>
     </div>
   )
