@@ -74,6 +74,10 @@
   margin-bottom: 48px;
 }
 
+.doc-section .component-showcase.bordered {
+  border: 1px solid var(--tant-border-color-border1-1);
+}
+
 .doc-section .component-showcase-half {
   width: 50%;
   border-radius: 10px;
@@ -138,6 +142,11 @@
 }
 
 .doc-section .type-list .type-list-item.col {
+  flex-direction: column;
+  gap: 20px
+}
+
+.doc-section .type-list .type-list-item.col-reversed {
   flex-direction: column-reverse;
   gap: 20px
 }
@@ -164,6 +173,7 @@
 .doc-section .type-list .type-list-item .type-item-content .content-header {
   display: flex;
   gap: 16px;
+  flex-flow: row wrap;
 }
 
 .doc-section .type-list .type-list-item .type-item-content .content-header p {

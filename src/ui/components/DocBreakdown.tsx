@@ -18,7 +18,7 @@ export const DocBreakdown = ({
           </li>        
         )}
       </ul>
-      <img className="component-showcase" src={generateImgSrc(content.breakdownImg)}></img>
+      <img className="component-showcase bordered" src={generateImgSrc(content.breakdownImg)}></img>
     </div>
   );
 
