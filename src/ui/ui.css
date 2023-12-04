@@ -57,7 +57,7 @@
 
 .doc-container .doc-section {
   margin: auto;
-  padding: 48px 0;
+  padding: 64px 0;
 }
 
 .doc-container .doc-header {
@@ -187,8 +187,69 @@
   list-style-type: disc;
 }
 
-/* content-desc-item */
+/* Principle Section */
+.doc-section .type-list .principle-row {
+  display: flex;
+  gap: 40px;
+  align-items: start;
+}
 
+.doc-section .type-list .principle-row .principle-item {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.doc-section .type-list .principle-row .principle-item.half {
+  width: 50%;
+}
+
+.doc-section .type-list .principle-row .principle-item img{
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 32px;
+}
+.doc-section .type-list .principle-row .principle-item .principle-item-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot {
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  margin-right: 10px;
+  color: var(--tant-white-white-100);
+  font: var(--tant-body-font-body-regular);
+  line-height: 20px;
+}
+
+.doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot.green {
+  background-color: var(--tant-status-success-color-success-default);
+}
+
+.doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot.red {
+  background-color: var(--tant-status-danger-color-danger-default);
+}
+
+.doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot.orange {
+  background-color: var(--tant-status-warning-color-warning-default);
+}
+
+.doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot-desc.green {
+  color: var(--tant-status-success-color-success-default);
+}
+
+.doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot-desc.red {
+  color: var(--tant-status-danger-color-danger-default);
+}
+
+.doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot-desc.orange {
+  color: var(--tant-status-warning-color-warning-default);
+}
 /* 
 body {
   font: 16px sans-serif;
