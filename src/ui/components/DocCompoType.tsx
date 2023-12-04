@@ -12,18 +12,16 @@ export const DocCompoType = ({
             <h3 id={item.title.replace(/\s/g, '')}>{item.title}</h3>
             <p >{item.subTitle}</p>
           </div>
-          <div className="content-desc">
-            <ul className='content-desc'>{
-              item.content?.map((content, contentIndex) =>
-                <li key={contentIndex}>{content}</li>
-              )
-            }</ul>
-            <ul className='content-desc'>{
-              item.bulletPointList?.map((bullet, bulletIndex) =>
-                <li key={bulletIndex} className="bullet">{bullet}</li>
-              )
-            }</ul>
-          </div>
+          <ul className='content-desc'>{
+            item.content?.map((content, contentIndex) =>
+              <li key={contentIndex}>{content}</li>
+            )
+          }</ul>
+          <ul className='content-desc'>{
+            item.bulletPointList?.map((bullet, bulletIndex) =>
+              <li key={bulletIndex} className="bullet">{bullet}</li>
+            )
+          }</ul>
         </div>
     </li>
   );
