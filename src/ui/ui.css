@@ -28,6 +28,11 @@
   margin-bottom: 48px;
 }
 
+.doc-container h3 {
+  font: var(--tant-header-font-header4-medium);
+  color: var(--tant-text-gray-color-text1-2);
+}
+
 .doc-container h4 {
   font: var(--tant-header-font-header5-medium);
   color: var(--tant-text-gray-color-text1-2);
@@ -44,7 +49,6 @@
 }
 
 .doc-container .doc-section {
-  max-width: 850px;
   margin: auto;
   padding: 48px 0;
 }
@@ -62,6 +66,12 @@
   border-radius: 10px;
   margin-bottom: 48px;
 }
+
+.doc-section .component-showcase-half {
+  width: 50%;
+  border-radius: 10px;
+}
+
 .doc-section .full-width-text {
   width: 75%;
   padding-bottom: 24px 0;
@@ -107,7 +117,70 @@
 }
 
 
+/* Compo Type Section */
+.doc-section .type-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
 
+.doc-section .type-list .type-list-item{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.doc-section .type-list .type-list-item.col {
+  flex-direction: column-reverse;
+  gap: 20px
+}
+
+.doc-section .type-list .type-list-item.row {
+  flex-direction: row;
+  gap: 40px
+}
+
+.doc-section .type-list .type-list-item .type-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.doc-section .type-list .type-list-item .type-item-content.full {
+  width: max-content;
+}
+
+.doc-section .type-list .type-list-item .type-item-content.half {
+  width: 50%;
+}
+
+.doc-section .type-list .type-list-item .type-item-content .content-header {
+  display: flex;
+  gap: 16px;
+}
+
+.doc-section .type-list .type-list-item .type-item-content .content-header p {
+  font: var(--tant-header-font-header4-medium);
+  font-weight: 400;
+  color: var(--tant-text-gray-color-text1-3);
+}
+
+.doc-section .type-list .type-list-item .type-item-content .content-desc {
+  font: var(--tant-body-font-body-regular);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.doc-section .type-list .type-list-item .type-item-content .content-desc :has(> .bullet) {
+  padding-left: 16px;
+}
+
+.doc-section .type-list .type-list-item .type-item-content .bullet {
+  list-style-type: disc;
+}
+
+/* content-desc-item */
 
 /* 
 body {

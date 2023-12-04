@@ -51,7 +51,7 @@ export const App = (settingData) => {
                 <Button variant="secondary" onClick={endPreviewMode} className="mr-3">← 返回</Button>
                 <div className="text-base text-slate-600 font-medium">预览生成网页</div>
             </div>
-            <div className="flex-1 overflow-y-auto bg-white rounded-md shadow-xl">
+            <div className="flex-1 overflow-y-auto bg-white rounded-md shadow-xl px-40">
                 <DocContainer data={jsonData}></DocContainer>
             </div>
         </div>

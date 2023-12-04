@@ -5,22 +5,22 @@ export const DocCompoType = ({
   compoType,
 }) => {
   const componentTypeList = compoType.typeList?.map((item, itemIndex) =>
-    <li key={itemIndex} className={`flex items-start justify-between gap-10 ${item.verticalLayout ? "flex-col" : "flex-row"}`}>
-        <img className={`rounded-xl mr-4 ${item.verticalLayout ? "w-max" : "w-1/2"}`} src={generateImgSrc(item.img)}></img>
-        <div className={`flex flex-col ${item.verticalLayout ? "w-max" : "w-1/2"}`}>
-          <div className="flex gap-4 mb-4">
-            <h3 id={item.title.replace(/\s/g, '')} className="text-xl text-slate-700 font-medium">{item.title}</h3>
-            <p className="text-xl text-slate-500 font-normal">{item.subTitle}</p>
+    <li key={itemIndex} className={`type-list-item ${item.verticalLayout ? "col" : "row"}`}>
+        <img className={`${item.verticalLayout ? "component-showcase" : "component-showcase-half "}`} src={generateImgSrc(item.img)}></img>
+        <div className={`type-item-content ${item.verticalLayout ? "full" : "half"}`}>
+          <div className="content-header">
+            <h3 id={item.title.replace(/\s/g, '')}>{item.title}</h3>
+            <p >{item.subTitle}</p>
           </div>
-          <div className='text-sm'>
-            <ul>{
+          <div className="content-desc">
+            <ul className='content-desc'>{
               item.content?.map((content, contentIndex) =>
-                <li key={contentIndex} className="mb-2">{content}</li>
+                <li key={contentIndex}>{content}</li>
               )
             }</ul>
-            <ul className="list-disc ml-4">{
+            <ul className='content-desc'>{
               item.bulletPointList?.map((bullet, bulletIndex) =>
-                <li key={bulletIndex} className="mb-2">{bullet}</li>
+                <li key={bulletIndex} className="bullet">{bullet}</li>
               )
             }</ul>
           </div>
@@ -32,7 +32,7 @@ export const DocCompoType = ({
     <div className="doc-section-wrapper">
       <div className="doc-section">
         <h2 id={compoType.typeTitle.replace(/\s/g, '')}>{compoType.typeTitle}</h2>
-        <ul className="flex flex-col gap-20">{componentTypeList}</ul>
+        <ul className="type-list">{componentTypeList}</ul>
       </div>
     </div>
   )
