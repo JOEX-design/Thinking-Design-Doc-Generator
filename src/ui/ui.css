@@ -55,6 +55,10 @@
   border-bottom: 1px solid var(--tant-border-color-border1-1);
 }
 
+.doc-container .doc-section-wrapper:last-child {
+  border-bottom: none;
+}
+
 .doc-container .doc-section {
   margin: auto;
   padding: 64px 0;
@@ -182,18 +186,18 @@
   color: var(--tant-text-gray-color-text1-3);
 }
 
-.doc-section .type-list .type-list-item .type-item-content .content-desc {
+.doc-section .type-list .content-desc {
   font: var(--tant-body-font-body-regular);
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.doc-section .type-list .type-list-item .type-item-content .content-desc:has(.bullet) {
+.doc-section .type-list .content-desc:has(.bullet) {
   padding-left: 16px;
 }
 
-.doc-section .type-list .type-list-item .type-item-content .content-desc .bullet {
+.doc-section .type-list .content-desc .bullet {
   list-style-type: disc;
 }
 
@@ -260,82 +264,9 @@
 .doc-section .type-list .principle-row .principle-item .principle-item-content .principle-dot-desc.orange {
   color: var(--tant-status-warning-color-warning-default);
 }
-/* 
-body {
-  font: 16px sans-serif;
-  margin: 20px;
-}
-button {
-  border-radius: 5px;
-  background: white;
-  color: black;
-  border: none;
-  padding: 8px 15px;
-  margin: 0 5px;
-  box-shadow: inset 0 0 0 1px black;
-  outline: none;
-}
-.container {
-  padding: 2rem;
-}
-#create {
-  box-shadow: none;
-  background: #18A0FB;
-  color: white;
-}
-input {
-  border: none;
-  outline: none;
-  width: 100%;
-  font-size: 16px;
-  padding: 8px;
-}
 
-.header {
-  text-align: center;
+.doc-section .pattern-header {
+  font: var(--tant-header-font-header4-medium);
+  color: var(--tant-text-gray-color-text1-2);
+  margin-bottom: 20px;
 }
-.textList {
-  display: flex;
-  flex-direction: column;
-}
-.textItem {
-  display: flex;
-  justify-content: center;
-  margin: 0.5rem 0;
-}
-input:hover { box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1); }
-input:focus { box-shadow: inset 0 0 0 2px #18A0FB; }
-
-.preview-app {
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.preview-connection-info {
-  display: flex;
-  align-self: center;
-  margin-bottom: 16px;
-}
-.preview-plugin-wrapper {
-  position: relative;
-  height: 500;
-  width: 400;
-  border: 1px solid black;
-  overflow: auto;
-}
-.select-warning {
-  text-align: center;
-  color: #4a4848;
-}
-.preview-connection-status {
-  border-radius: 50px/50px;
-  background-color: #f00;
-  width: 12px;
-  height: 12px;
-  margin-left: 8px;
-}
-.status-green {
-  background-color: lawngreen;
-} */
