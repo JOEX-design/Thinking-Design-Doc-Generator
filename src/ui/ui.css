@@ -75,6 +75,34 @@
   color: var(--tant-text-gray-color-text1-3);
 }
 
+.doc-table-content {
+  font: var(--tant-body-font-body-regular);
+  color: var(--tant-text-gray-color-text1-3);
+  padding: 4px 0;
+  padding-right: 8px;
+  border-right: 2px solid var(--tant-fill-color-fill1-1);
+}
+
+.doc-table-content.active {
+  border-color: var(--tant-secondary-color-secondary-default);
+}
+
+.doc-table-content .table-content-text {
+  color: var(--tant-text-gray-color-text1-4);
+  font: var(--tant-body-font-body-regular);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 120px;
+}
+
+.doc-table-content .table-content-text.active {
+  color: var(--tant-text-gray-color-text1-2);
+  font: var(--tant-body-font-body-medium);
+}
+
+/* Sections */
 .doc-container .doc-section-wrapper {
   border-bottom: 1px solid var(--tant-border-color-border1-1);
 }

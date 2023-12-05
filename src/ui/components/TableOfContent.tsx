@@ -33,9 +33,9 @@ export const TableOfContent = () => {
           <nav>
             <ul>
               {headings.map(heading => (
-                <li key={heading.text} className={`text-sm text-slate-500 pr-2 border-r-2 ${activeId === heading.id ? 'border-slate-800' : 'border-slate-100'}  py-1 pr-3`}>
+                <li key={heading.text} className={`doc-table-content ${activeId === heading.id ? 'active': ''}`}>
                     <a
-                        className={`${activeId === heading.id ? 'text-slate-800 font-medium' : 'text-slate-400'} ${getStyle(heading.level)}  truncate max-w-[120px] inline-block hover:text-slate-900`}
+                        className={`table-content-text ${activeId === heading.id ? 'active' : ''} ${getStyle(heading.level)}`}
                         href={`#${heading.id}`}
                         onClick={(e) => {
                             e.preventDefault()
