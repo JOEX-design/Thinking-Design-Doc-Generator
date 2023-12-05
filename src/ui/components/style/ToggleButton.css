@@ -1,0 +1,45 @@
+.toggle-button {
+	position: relative;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 4px;
+	display: inline-grid;
+}
+
+.doc-toggle-button .button-group {
+	display: inline-grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	grid-gap: 4px;
+}
+
+.doc-toggle-button .toggle-button-item {
+	padding: 4px 8px;
+	border-radius: 4px;
+	cursor: pointer;
+    color: var(--tant-text-gray-color-text1-3);
+}
+
+.doc-toggle-button .toggle-button-item.active {
+    color: var(--tant-text-gray-color-text1-2);
+    background-color: var(--tant-secondary-color-secondary-transp-active);
+}
+.doc-toggle-button .toggle-button-item:hover {
+	background-color: var(--tant-secondary-color-secondary-transp-hover);
+}
+
+.doc-toggle-button .toggle-button-item.active:hover {
+	background-color: var(--tant-secondary-color-secondary-transp-fill);
+	/* background-color: unset; */
+}
+
+.doc-toggle-button .slide-animation {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	z-index: -1;
+	height: 100%;
+	background-color: var(--tant-primary-color-primary-active);
+	transition: transform 0.3s ease;
+	border-radius: 4px;
+}

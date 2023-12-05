@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import { DocContainer } from "../docs/DocContainer"
 import { CodeResult } from "./components/CodeResult";
 import { Button } from "./components/Button";
+import { ToggleButton } from "./components/ToggleButton";
 import { SettingContext } from "./context/SettingContext";
+import "../ui/ui.css"
 
 export const App = (settingData) => {
     const [jsonData, setJsonData] = useState(null);
@@ -46,12 +48,16 @@ export const App = (settingData) => {
 
 
     if (previewMode) { return (
-        <div className={'bg-slate-200 shadow-md rounded-md border border-slate-100 flex flex-col h-full w-full'} >
-            <div className="flex items-center p-2.5">
-                <Button variant="secondary" onClick={endPreviewMode} className="mr-3">← 返回</Button>
-                <div className="text-base text-slate-600 font-medium">预览生成网页</div>
+        // <div className={'bg-slate-200 shadow-md rounded-md flex flex-col h-full w-full'} >
+        <div className={'doc-page'} id="doc-container" data-mode="light">
+            <div className="flex justify-between p-2.5">
+                <div className="flex items-center">
+                    <Button variant="secondary" onClick={endPreviewMode} className="mr-3">← 返回</Button>
+                    <div className="doc-page-header">预览生成网页</div>
+                </div>
+                <ToggleButton></ToggleButton>
             </div>
-            <div className="flex-1 overflow-y-auto bg-white rounded-md shadow-xl px-40">
+            <div className="doc-wrapper" >
                 <DocContainer data={jsonData}></DocContainer>
             </div>
         </div>
