@@ -11,9 +11,9 @@ export const TableOfContent = () => {
     const getStyle = (level) => {
         switch (level) {
           case 2:
-            return 'pl-0'
+            return 'level-1'
           case 3:
-            return 'pl-3'
+            return 'level-2'
           default:
             return null
         }
