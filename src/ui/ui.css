@@ -219,7 +219,7 @@
 }
 
 .doc-section .type-list .type-list-item .type-item-content.full {
-  width: max-content;
+  width: 100%;
 }
 
 .doc-section .type-list .type-list-item .type-item-content.half {
